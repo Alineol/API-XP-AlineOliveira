@@ -5,7 +5,6 @@ import jwt from '../jwt';
 
 const login = async (email: string, senha: string): Promise<string> => {
   const [user] = await userModel.login(email, senha);
-  console.log(user);
   if (!user) return ''; 
   const token = jwt.generateToken(user.email);
   return token;
