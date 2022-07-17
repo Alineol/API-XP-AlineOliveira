@@ -1,8 +1,9 @@
 import { Router } from 'express';
+import contaRoutes from './contaRoutes'
 
 const route = Router();
 
-route.get('/', (req, res) => res.status(200).json({message:'lalala'}))
+route.use('/conta', contaRoutes)
 
 
 export default route;
