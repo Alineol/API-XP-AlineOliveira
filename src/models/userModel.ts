@@ -7,7 +7,14 @@ const login = async (email: string, senha: string): Promise<IUser[]> => {
   
   return user as IUser[] | [];
 };
-login('aline@gmail.com', '123@123');
+
+const getUserByEmail = async (email: string):Promise<IUser[]> => {
+  const q = 'SELECT CodCliente FROM XPCorretora.Usuarios WHERE(email = ?)';
+  const [user] = await connection.execute(q, [email]);
+  return user as IUser[];
+};
+
 export default {
   login,
+  getUserByEmail,
 };
