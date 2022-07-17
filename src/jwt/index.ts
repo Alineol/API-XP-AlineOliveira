@@ -1,12 +1,11 @@
 import dotenv from 'dotenv';
 import { JwtPayload, sign, verify } from 'jsonwebtoken';
-import IUser from '../interfaces/IUser';
 
 dotenv.config();
 
 const TokenSecret = process.env.JWT_SECRET as string;
 
-const generateToken = (user: IUser): string => sign(user, TokenSecret, {
+const generateToken = (email: string): string => sign({ email }, TokenSecret, {
   expiresIn: '300m', algorithm: 'HS256',
 });
 
