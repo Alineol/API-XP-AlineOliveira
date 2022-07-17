@@ -9,8 +9,7 @@ const generateToken = (email: string): string => sign({ email }, TokenSecret, {
   expiresIn: '300m', algorithm: 'HS256',
 });
 
-const checkToken = async (token: string | undefined): Promise<string | JwtPayload | boolean> => {
-  if (!token) return false;
+const checkToken = async (token: string): Promise<string | JwtPayload | boolean> => {
   try {
     const validate = verify(token, TokenSecret);
     return validate;
