@@ -33,11 +33,17 @@ Promise<string | ResultSetHeader> => {
   return contaModel.decrementAccount(cod, value);
 };
 
-// const putMoney = async (cod:number, value: number, token: string):
-// Promise<ResultSetHeader> => contaModel.increaseAccount(cod, value);
+const putMoney = async (cod:number, value: number, token: string):
+Promise<string | ResultSetHeader> => {
+  const authorization = await checkAuthorization(token, cod);
+  if (!authorization) {
+    return '';
+  }
+  return contaModel.increaseAccount(cod, value);
+};
 
 export default {
   getByCodCliente,
   getMoney,
-  // putMoney,
+  putMoney,
 };
