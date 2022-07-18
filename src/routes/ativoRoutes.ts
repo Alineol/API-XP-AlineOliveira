@@ -12,7 +12,17 @@ route.get(
   ativoController.getByCodAtivo,
 );
 
-route.get('/corretora/', (req: Request, res: Response) => res.status(400).json({
+route.get(
+  '/cliente/:CodCliente',
+  userMid.validatetoken,
+  mid.validateAtivosClienteParams,
+  ativoController.getByCodCliente,
+);
+
+route.get('/corretora', (req: Request, res: Response) => res.status(400).json({
+  message: 'URL incompleta, necesssita de um parâmetro' }));
+
+route.get('/cliente', (req: Request, res: Response) => res.status(400).json({
   message: 'URL incompleta, necesssita de um parâmetro' }));
 
 export default route;
