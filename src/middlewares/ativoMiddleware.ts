@@ -15,6 +15,20 @@ const validateAtivosCorretoraParams = (req: Request, res: Response, next: NextFu
   return next();
 };
 
+const validateAtivosClienteParams = (req: Request, res: Response, next: NextFunction)
+: Response | void => {
+  const schema = joi.object({
+    CodCliente: joi.number(),
+  });
+  const { error } = schema.validate(req.params, { messages }); 
+  if (error) {
+    const { message } = error.details[0];
+    return res.status(400).json({ message });
+  }
+  return next();
+};
+
 export default {
   validateAtivosCorretoraParams,
+  validateAtivosClienteParams,
 };
