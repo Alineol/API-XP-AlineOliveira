@@ -4,9 +4,8 @@ import IAtivoUsuario from '../interfaces/IAtivoUsuario';
 
 const getByCodAtivo = async (cod: number): Promise<IAtivo[]> => {
   const query = 'SELECT * FROM XPCorretora.AtivosCorretora WHERE CodAtivo = ?;';
-  // ! mudar o nome dessa variavel
-  const [Account] = await connection.execute(query, [cod]);
-  return Account as IAtivo[];
+  const [ativo] = await connection.execute(query, [cod]);
+  return ativo as IAtivo[];
 };
 
 const getByCodCliente = async (cod: number): Promise<IAtivoUsuario[]> => {
