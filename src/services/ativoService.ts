@@ -17,7 +17,8 @@ const getAtivosCorretoraByCodAtivo = async (cod:number): Promise<IAtivo | string
   };
 };
 
-const getAtivosUsuarioByCodCliente = async (cod: number, token: string): Promise<IAtivoUsuario[] | string> => {
+const getAtivosUsuarioByCodCliente = async (cod: number, token: string)
+: Promise<IAtivoUsuario[] | string> => {
   const authorization = await userService.checkAuthorization(token, cod);
   if (!authorization) {
     return '';
