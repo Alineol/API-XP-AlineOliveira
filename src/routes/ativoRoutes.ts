@@ -16,7 +16,7 @@ route.get(
   '/cliente/:CodCliente',
   userMid.validatetoken,
   mid.validateAtivosClienteParams,
-  ativoController.getByCodCliente,
+  ativoController.getAtivosUsuarioByCodCliente,
 );
 
 route.get('/corretora', (req: Request, res: Response) => res.status(400).json({
