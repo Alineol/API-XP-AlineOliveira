@@ -5,8 +5,8 @@ import userService from './userService';
 
 // import { checkAuthorization } from 
 
-const getByCodAtivo = async (cod:number): Promise<IAtivo | string> => {
-  const [ativo] = await ativoModel.getByCodAtivo(cod);
+const getAtivosCorretoraByCodAtivo = async (cod:number): Promise<IAtivo | string> => {
+  const [ativo] = await ativoModel.getAtivosCorretoraByCodAtivo(cod);
   if (!ativo) {
     return '';
   }
@@ -32,6 +32,6 @@ const getByCodCliente = async (cod: number, token: string): Promise<IAtivoUsuari
 };
 
 export default {
-  getByCodAtivo,
+  getAtivosCorretoraByCodAtivo,
   getByCodCliente,
 };
