@@ -17,12 +17,12 @@ const getAtivosCorretoraByCodAtivo = async (cod:number): Promise<IAtivo | string
   };
 };
 
-const getByCodCliente = async (cod: number, token: string): Promise<IAtivoUsuario[] | string> => {
+const getAtivosUsuarioByCodCliente = async (cod: number, token: string): Promise<IAtivoUsuario[] | string> => {
   const authorization = await userService.checkAuthorization(token, cod);
   if (!authorization) {
     return '';
   }
-  const ativos = await ativoModel.getByCodCliente(cod);
+  const ativos = await ativoModel.getAtivosUsuarioByCodCliente(cod);
   return ativos.map((ativo) => ({
     CodCliente: ativo.CodCliente,
     CodAtivo: ativo.CodAtivo,
@@ -33,5 +33,5 @@ const getByCodCliente = async (cod: number, token: string): Promise<IAtivoUsuari
 
 export default {
   getAtivosCorretoraByCodAtivo,
-  getByCodCliente,
+  getAtivosUsuarioByCodCliente,
 };
