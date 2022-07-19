@@ -9,7 +9,7 @@ route.get(
   '/corretora/:CodAtivo', 
   userMid.validatetoken,
   mid.validateAtivosCorretoraParams, 
-  ativoController.getByCodAtivo,
+  ativoController.getAtivosCorretoraByCodAtivo,
 );
 
 route.get(
