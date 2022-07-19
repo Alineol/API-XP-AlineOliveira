@@ -8,7 +8,7 @@ const getAtivosCorretoraByCodAtivo = async (cod: number): Promise<IAtivo[]> => {
   return ativo as IAtivo[];
 };
 
-const getByCodCliente = async (cod: number): Promise<IAtivoUsuario[]> => {
+const getAtivosUsuarioByCodCliente = async (cod: number): Promise<IAtivoUsuario[]> => {
   const query = 'SELECT * FROM XPCorretora.AtivosUsuarios WHERE CodCliente = ?;';
   const [ativos] = await connection.execute(query, [cod]);
   return ativos as IAtivoUsuario[];
@@ -16,5 +16,5 @@ const getByCodCliente = async (cod: number): Promise<IAtivoUsuario[]> => {
 
 export default {
   getAtivosCorretoraByCodAtivo,
-  getByCodCliente,
+  getAtivosUsuarioByCodCliente,
 };
