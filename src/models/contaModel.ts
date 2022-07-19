@@ -11,14 +11,14 @@ const getByCodCliente = async (cod: number): Promise<IAccount[]> => {
 const decrementAccount = async (cod: number, value: number): Promise<ResultSetHeader> => {
   const q = 'UPDATE XPCorretora.Contas SET Valor = Valor - ? WHERE CodCliente = ?';
 
-  const [transaction] = await connection.execute<ResultSetHeader>(q, [value, 1]);
+  const [transaction] = await connection.execute<ResultSetHeader>(q, [value, cod]);
   return transaction;
 };
 
 const increaseAccount = async (cod: number, value: number): Promise<ResultSetHeader> => {
   const q = 'UPDATE XPCorretora.Contas SET Valor = Valor + ? WHERE CodCliente = ?';
 
-  const [transaction] = await connection.execute<ResultSetHeader>(q, [value, 1]);
+  const [transaction] = await connection.execute<ResultSetHeader>(q, [value, cod]);
   return transaction;
 };
 
