@@ -3,8 +3,8 @@ import helpers from '../helpers';
 import ativoService from '../services/ativoService';
 
 const getAtivosCorretoraByCodAtivo = async (req: Request, res: Response): Promise<Response> => {
-  const { CodAtivo } = req.params;
-  const ativo = await ativoService.getAtivosCorretoraByCodAtivo(Number(CodAtivo));
+  const { codAtivo } = req.params;
+  const ativo = await ativoService.getAtivosCorretoraByCodAtivo(Number(codAtivo));
   if (ativo === 'Ativo não encontrado') return res.status(404).json({ message: ativo });
   return res.status(200).json(ativo);
 };
