@@ -5,9 +5,9 @@ import contaService from '../services/contaService';
 const invalidTokenMessage = 'Token invalido, sem autorização';
 
 const getByCodCliente = async (req: Request, res: Response): Promise<Response> => {
-  const { CodCliente } = req.params;
+  const { codCliente } = req.params;
   const { authorization } = req.headers;
-  const account = await contaService.getByCodCliente(Number(CodCliente), authorization as string);
+  const account = await contaService.getByCodCliente(Number(codCliente), authorization as string);
   if (account === invalidTokenMessage) return res.status(401).json({ message: account }); 
   return res.status(200).json(account);
 };
