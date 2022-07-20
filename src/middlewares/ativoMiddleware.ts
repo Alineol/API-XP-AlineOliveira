@@ -5,7 +5,7 @@ import { messages } from 'joi-translation-pt-br';
 const validateAtivosCorretoraParams = (req: Request, res: Response, next: NextFunction)
 : Response | void => {
   const schema = joi.object({
-    CodAtivo: joi.number(),
+    codAtivo: joi.number(),
   });
   const { error } = schema.validate(req.params, { messages }); 
   if (error) {
@@ -18,7 +18,7 @@ const validateAtivosCorretoraParams = (req: Request, res: Response, next: NextFu
 const validateAtivosClienteParams = (req: Request, res: Response, next: NextFunction)
 : Response | void => {
   const schema = joi.object({
-    CodCliente: joi.number(),
+    codCliente: joi.number(),
   });
   const { error } = schema.validate(req.params, { messages }); 
   if (error) {
