@@ -1,6 +1,6 @@
 interface IAccount {
-  CodCliente: number,
-  Valor: number,
+  codCliente: number,
+  valor: number,
 }
 
 export default IAccount;

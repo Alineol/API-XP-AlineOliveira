@@ -1,7 +1,7 @@
 import IAtivo from './IAtivo';
 
 interface IAtivoUsuario extends IAtivo {
-  CodCliente: number
+  codCliente: number
 }
 
 export default IAtivoUsuario;

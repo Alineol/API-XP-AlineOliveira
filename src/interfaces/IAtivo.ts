@@ -1,7 +1,7 @@
 interface IAtivo {
-  CodAtivo: number,
-  QtdeAtivo: number,
-  Valor: number,
+  codAtivo: number,
+  qtdeAtivo: number,
+  valor: number,
 }
 
 export default IAtivo;

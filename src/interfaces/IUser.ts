@@ -1,7 +1,7 @@
 interface IUser {
   email: string,
   senha?: string,
-  CodCliente?: number,
+  codCliente?: number,
 }
 
 export default IUser;
