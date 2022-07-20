@@ -3,10 +3,10 @@ import ativoUsuarioService from '../services/ativoUsuarioService';
 import helpers from '../helpers';
 
 const getAtivosUsuarioByCodCliente = async (req: Request, res: Response): Promise<Response> => {
-  const { CodCliente } = req.params;
+  const { codCliente } = req.params;
   const { authorization } = req.headers;
   const ativos = await ativoUsuarioService
-    .getAtivosUsuarioByCodCliente(Number(CodCliente), authorization as string);
+    .getAtivosUsuarioByCodCliente(Number(codCliente), authorization as string);
   if (ativos === 'Token invalido, sem autorização') {
     return res.status(401).json({ message: ativos });
   } 
