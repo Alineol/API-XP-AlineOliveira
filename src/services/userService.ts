@@ -7,7 +7,7 @@ const checkAuthorization = async (token: string, cod: number): Promise<boolean> 
   const tokenEmail = await jwt.checkToken(token) as IUser;
   const { email } = tokenEmail;
   const [codCliente] = await userModel.getUserByEmail(email);
-  return codCliente.CodCliente === cod;
+  return codCliente.codCliente === cod;
 };
 
 const login = async (email: string, senha: string): Promise<string> => {

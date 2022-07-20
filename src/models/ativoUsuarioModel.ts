@@ -4,31 +4,33 @@ import IAtivoUsuario from '../interfaces/IAtivoUsuario';
 
 const bd = 'XPCorretora.AtivosUsuarios';
 
-const getAtivosUsuarioByCodCliente = async (cod: number): Promise<IAtivoUsuario[]> => {
-  // !mudar essa query depois 
-  const query = 'SELECT * FROM XPCorretora.AtivosUsuarios WHERE CodCliente = ?;';
-  const [ativos] = await connection.execute(query, [cod]);
+const getAtivosUsuarioByCodCliente = async (codCliente: number): Promise<IAtivoUsuario[]> => {
+  // TODO mudar essa query depois 
+  const query = 'SELECT * FROM XPCorretora.AtivosUsuarios WHERE codCliente = ?;';
+  const [ativos] = await connection.execute(query, [codCliente]);
   return ativos as IAtivoUsuario[];
 };
 
 const getAtivosUsuarioByCodClienteAndCodAtivo = async (
   codAtivo:number,
-  CodCliente: number,
+  codCliente: number,
 ): Promise<IAtivoUsuario[]> => {
-  const query = `SELECT * FROM ${bd} WHERE CodCliente = ? AND CodAtivo = ? And QtdeAtivo > 0;`;
-  const [ativos] = await connection.execute(query, [CodCliente, codAtivo]);
+  const query = `SELECT * FROM ${bd} WHERE codCliente = ? AND codAtivo = ? And qtdeAtivo > 0;`;
+  const [ativos] = await connection.execute(query, [codCliente, codAtivo]);
   return ativos as IAtivoUsuario[];
 };
 
 const decrementAtivosUsuarioQtde = async (
   codAtivo:number,
-  CodCliente: number, 
-  QtdAtivo: number,
+  codCliente: number, 
+  qtdeAtivo: number,
 ): Promise<ResultSetHeader> => {
-  const q = `UPDATE ${bd} SET QtdeAtivo = QtdeAtivo - ? WHERE CodAtivo = ? AND CodCliente = ?`;
-  const [update] = await connection.execute<ResultSetHeader>(q, [QtdAtivo, codAtivo, CodCliente]);
+  const q = `UPDATE ${bd} SET qtdeAtivo = qtdeAtivo - ? WHERE codAtivo = ? AND codCliente = ?`;
+  const [update] = await connection.execute<ResultSetHeader>(q, [qtdeAtivo, codAtivo, codCliente]);
   return update;
 };
+
+// todo cria lógica para aumentar a quantidade de ativos do usuario 
 
 export default {
   getAtivosUsuarioByCodCliente,

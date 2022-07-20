@@ -5,7 +5,7 @@ import mid from '../middlewares/ativoMiddleware';
 const route = Router();
 
 route.get(
-  '/:CodAtivo', 
+  '/:codAtivo', 
   mid.validateAtivosCorretoraParams, 
   ativoController.getAtivosCorretoraByCodAtivo,
 );

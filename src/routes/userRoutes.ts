@@ -7,7 +7,7 @@ import ativoUsuarioController from '../controllers/ativoUsuarioController';
 
 const route = Router();
 
-route.get('/conta/:CodCliente', contaController.getByCodCliente);
+route.get('/conta/:codCliente', contaController.getByCodCliente);
 
 route.post(
   '/conta/saque', 
@@ -22,7 +22,7 @@ route.post(
 );
 
 route.get(
-  '/ativos/:CodCliente',
+  '/ativos/:codCliente',
   mid.validateAtivosClienteParams,
   ativoUsuarioController.getAtivosUsuarioByCodCliente,
 );

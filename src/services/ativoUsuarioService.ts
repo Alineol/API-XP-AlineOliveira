@@ -11,10 +11,10 @@ const getAtivosUsuarioByCodCliente = async (cod: number, token: string)
   
   const ativos = await ativoUsuarioModel.getAtivosUsuarioByCodCliente(cod);
   return ativos.map((ativo) => ({
-    CodCliente: ativo.CodCliente,
-    CodAtivo: ativo.CodAtivo,
-    QtdeAtivo: ativo.QtdeAtivo,
-    Valor: Number(ativo.Valor),
+    codCliente: ativo.codCliente,
+    codAtivo: ativo.codAtivo,
+    qtdeAtivo: ativo.qtdeAtivo,
+    valor: Number(ativo.valor),
   }));
 };
 
@@ -31,7 +31,7 @@ const sellAtivosUsuarios = async (
     .getAtivosUsuarioByCodClienteAndCodAtivo(codAtivo, codCliente);
   if (!ativoToSell) return 'Ativo não encontrado';
 
-  const checkQtde = helpers.checkAtivosQtdeToDecrement(ativoToSell.QtdeAtivo, qtdeAtivo);
+  const checkQtde = helpers.checkAtivosQtdeToDecrement(ativoToSell.qtdeAtivo, qtdeAtivo);
   if (checkQtde === false) return 'Quantidade de ativos excedida';
 
   return ativoUsuarioModel.decrementAtivosUsuarioQtde(codAtivo, codCliente, qtdeAtivo);

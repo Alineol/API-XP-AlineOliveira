@@ -5,31 +5,31 @@ import IAccount from '../interfaces/IAccount';
 
 const athorizationMessage = 'Token invalido, sem autorização';
 
-const getByCodCliente = async (cod: number, token: string):Promise<IAccount | string> => {
-  const authorization = await userService.checkAuthorization(token, cod);
+const getByCodCliente = async (codCliente: number, token: string):Promise<IAccount | string> => {
+  const authorization = await userService.checkAuthorization(token, codCliente);
   if (!authorization) return athorizationMessage;
   
-  const [account] = await contaModel.getByCodCliente(cod);
+  const [account] = await contaModel.getByCodCliente(codCliente);
   return {
-    CodCliente: account.CodCliente,
-    Valor: Number(account.Valor),
+    codCliente: account.codCliente,
+    valor: Number(account.valor),
   };
 };
 
-const getMoney = async (cod:number, value: number, token: string):
+const getMoney = async (codCliente:number, value: number, token: string):
 Promise<string | ResultSetHeader> => {
-  const authorization = await userService.checkAuthorization(token, cod);
+  const authorization = await userService.checkAuthorization(token, codCliente);
   if (!authorization) return athorizationMessage;
 
-  return contaModel.decrementAccount(cod, value);
+  return contaModel.decrementAccount(codCliente, value);
 };
 
-const putMoney = async (cod:number, value: number, token: string):
+const putMoney = async (codCliente:number, value: number, token: string):
 Promise<string | ResultSetHeader> => {
-  const authorization = await userService.checkAuthorization(token, cod);
+  const authorization = await userService.checkAuthorization(token, codCliente);
   if (!authorization) return athorizationMessage;
 
-  return contaModel.increaseAccount(cod, value);
+  return contaModel.increaseAccount(codCliente, value);
 };
 
 export default {

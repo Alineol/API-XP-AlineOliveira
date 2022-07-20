@@ -11,9 +11,9 @@ const getAtivosCorretoraByCodAtivo = async (cod:number): Promise<IAtivo | string
     return 'Ativo não encontrado';
   }
   return {
-    CodAtivo: ativo.CodAtivo,
-    QtdeAtivo: ativo.QtdeAtivo,
-    Valor: Number(ativo.Valor),
+    codAtivo: ativo.codAtivo,
+    qtdeAtivo: ativo.qtdeAtivo,
+    valor: Number(ativo.valor),
   };
 };
 
@@ -29,9 +29,9 @@ const sellAtivosCorretora = async (
   const [ativoToSell] = await ativoModel.getAtivosCorretoraByCodAtivo(codAtivo);
   if (!ativoToSell) return 'Ativo não encontrado';
 
-  const checkQtde = helpers.checkAtivosQtdeToDecrement(ativoToSell.QtdeAtivo, qtdeAtivo);
+  const checkQtde = helpers.checkAtivosQtdeToDecrement(ativoToSell.qtdeAtivo, qtdeAtivo);
   if (checkQtde === false) return 'Quantidade de ativos excedida';
-
+  // todo cria lógica para aumentar a quantidade de ativos do cliente após uma compra
   return ativoModel.decrementAtivocCorretoraQtde(codAtivo, qtdeAtivo);
 };
 
