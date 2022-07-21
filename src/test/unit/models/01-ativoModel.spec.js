@@ -9,7 +9,7 @@ const { ativo, arrayVazio, resultSetHeader } = require('./mocks');
 describe('Ao pegar ativos da corretora por codAtivo:', () => {
   describe('- Quando o ativo não existe:', () => {
     before(() => {
-      sinon.stub(connection, 'execute').resolves([arrayVazio]);
+      sinon.stub(connection, 'execute').resolves(arrayVazio);
     });
     after(() => {
       connection.execute.restore();
@@ -23,7 +23,7 @@ describe('Ao pegar ativos da corretora por codAtivo:', () => {
   });
   describe('- Quando o ativo existe:', () => {
     before(() => {
-      sinon.stub(connection, 'execute').resolves([ativo]);
+      sinon.stub(connection, 'execute').resolves(ativo);
     });
     after(() => {
       connection.execute.restore();
@@ -40,7 +40,7 @@ describe('Ao pegar ativos da corretora por codAtivo:', () => {
 describe('Ao tentar diminuir a quantidade de ativos:', () => {
   describe('- Quando o ativo não existe:', () => {
     before(() => {
-      sinon.stub(connection, 'execute').resolves([arrayVazio]);
+      sinon.stub(connection, 'execute').resolves(arrayVazio);
     });
     after(() => {
       connection.execute.restore();
@@ -54,7 +54,7 @@ describe('Ao tentar diminuir a quantidade de ativos:', () => {
   });
   describe('- Quando o ativo existe:', () => {
     before(() => {
-      sinon.stub(connection, 'execute').resolves([resultSetHeader]);
+      sinon.stub(connection, 'execute').resolves(resultSetHeader);
     });
     after(() => {
       connection.execute.restore();
