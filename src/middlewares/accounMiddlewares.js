@@ -1,5 +1,5 @@
-import joi from 'joi';
-import { messages } from 'joi-translation-pt-br';
+const joi = require('joi');
+const { messages } = require('joi-translation-pt-br');
 
 const validateBody = (req, res, next) => {
   const schema = joi.object({

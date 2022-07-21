@@ -1,5 +1,5 @@
-import dotenv from 'dotenv';
-import { JwtPayload, sign, verify } from 'jsonwebtoken';
+const dotenv = require('dotenv');
+const { sign, verify } = require('jsonwebtoken');
 
 dotenv.config();
 

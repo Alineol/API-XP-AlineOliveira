@@ -1,5 +1,5 @@
-import helpers from '../helpers';
-import ativoService from '../services/ativoService';
+const helpers = require('../helpers');
+const ativoService = require('../services/ativoService');
 
 const pegaAtivosCorretoraporCodAtivo = async (req, res) => {
   const { codAtivo } = req.params;

@@ -1,5 +1,4 @@
-import IUser from '../interfaces/IUser';
-import connection from './connection';
+const connection = require('./connection');
 
 const login = async (email, senha) => {
   const q = 'SELECT email FROM XPCorretora.Usuarios WHERE email = ? AND senha = ?';

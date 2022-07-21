@@ -1,4 +1,4 @@
-import contaService from '../services/contaService';
+const contaService = require('../services/contaService');
 
 const invalidTokenMessage = 'Token invalido, sem autorização';
 

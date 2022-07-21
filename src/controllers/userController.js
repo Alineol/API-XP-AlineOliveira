@@ -1,4 +1,4 @@
-import userService from '../services/userService';
+const userService = require('../services/userService');
 
 const login = async (req, res) => {
   const { email, senha } = req.body;

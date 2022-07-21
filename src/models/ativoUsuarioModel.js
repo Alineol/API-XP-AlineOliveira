@@ -1,5 +1,4 @@
-import {} from 'mysql2';
-import connection from './connection';
+const connection = require('./connection');
 
 const bd = 'XPCorretora.AtivosUsuarios';
 

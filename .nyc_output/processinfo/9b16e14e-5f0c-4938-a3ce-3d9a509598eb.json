@@ -1,1 +1,0 @@
-{"parent":null,"pid":51340,"argv":["/usr/bin/node","/home/aline/node_modules/.bin/mocha","src/test/**/*.ts","--exit"],"execArgv":[],"cwd":"/home/aline/API-XP","time":1658415771888,"ppid":51329,"coverageFilename":"/home/aline/API-XP/.nyc_output/9b16e14e-5f0c-4938-a3ce-3d9a509598eb.json","externalId":"","uuid":"9b16e14e-5f0c-4938-a3ce-3d9a509598eb","files":[]}

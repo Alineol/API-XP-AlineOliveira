@@ -1,5 +1,4 @@
-import connection from './connection';
-import IAtivo from '../interfaces/IAtivo';
+const connection = require('./connection');
 
 const bd = 'XPCorretora.AtivosCorretora';
 

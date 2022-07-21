@@ -1,5 +1,4 @@
-import IAccount from '../interfaces/IAccount';
-import connection from './connection';
+const connection = require('./connection');
 
 const bd = 'XPCorretora.Contas';
 

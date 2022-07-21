@@ -1,6 +1,6 @@
-import { Router } from 'express';
-import ativoController from '../controllers/ativoController';
-import mid from '../middlewares/ativoMiddleware';
+const { Router } = require('express');
+const ativoController = require('../controllers/ativoController');
+const mid = require('../middlewares/ativoMiddleware');
 
 const route = Router();
 
