@@ -4,8 +4,8 @@ const sinon = require('sinon');
 const { expect } = require('chai');
 const ativoUsuarioModel = require('../../../models/ativoUsuarioModel');
 const connection = require('../../../models/connection');
-const { arrayVazio, resultSetHeader, ativosUsuario } = require('./mocks');
-// getAtivosUsuarioByCodCliente
+const { arrayVazio, arrayDeUmObjeto, arrayDeObjetos } = require('./mocks');
+
 describe('Ao pegar ativos do usuario pelo codigo do cliente:', () => {
   describe('- Quando o cliente não existe:', () => {
     before(() => {
@@ -23,7 +23,7 @@ describe('Ao pegar ativos do usuario pelo codigo do cliente:', () => {
   });
   describe('- Quando o cliente existe:', () => {
     before(() => {
-      sinon.stub(connection, 'execute').resolves(ativosUsuario);
+      sinon.stub(connection, 'execute').resolves(arrayDeObjetos);
     });
     after(() => {
       connection.execute.restore();
@@ -55,7 +55,7 @@ describe('Ao pegar ativos do usuario pelo codigo do cliente e do ativo:', () => 
   });
   describe('- Quando encontra um ativo nessas condições:', () => {
     before(() => {
-      sinon.stub(connection, 'execute').resolves(ativosUsuario[0]);
+      sinon.stub(connection, 'execute').resolves(arrayDeObjetos[0]);
     });
     after(() => {
       connection.execute.restore();
@@ -87,7 +87,7 @@ describe('Ao inserir um novo ativoUsuario na tabela', () => {
   });
   describe('- Quando a ação  é efetuada com sucesso:', () => {
     before(() => {
-      sinon.stub(connection, 'execute').resolves(resultSetHeader);
+      sinon.stub(connection, 'execute').resolves(arrayDeUmObjeto);
     });
     after(() => {
       connection.execute.restore();
@@ -120,7 +120,7 @@ describe('Ao aumentar a quantidade de ativos do usuario', () => {
   });
   describe('- Quando a ação  é efetuada com sucesso:', () => {
     before(() => {
-      sinon.stub(connection, 'execute').resolves(resultSetHeader);
+      sinon.stub(connection, 'execute').resolves(arrayDeUmObjeto);
     });
     after(() => {
       connection.execute.restore();
@@ -153,7 +153,7 @@ describe('Ao diminuir a quantidade de ativos do usuario', () => {
   });
   describe('- Quando a ação  é efetuada com sucesso:', () => {
     before(() => {
-      sinon.stub(connection, 'execute').resolves(resultSetHeader);
+      sinon.stub(connection, 'execute').resolves(arrayDeUmObjeto);
     });
     after(() => {
       connection.execute.restore();

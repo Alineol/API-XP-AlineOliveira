@@ -2,7 +2,7 @@ const ativo = [{ codAtivo: 1, qtdeAtivo: 10, valor: 27.50 }];
 
 const arrayVazio = [[]];
 
-const resultSetHeader = [{
+const arrayDeUmObjeto = [{
   fieldCount: 0,
   affectedRows: 1,
   insertId: 0,
@@ -12,7 +12,7 @@ const resultSetHeader = [{
   changedRows: 1,
 }];
 
-const ativosUsuario = [[
+const arrayDeObjetos = [[
   {
     codCliente: 1, codAtivo: 2, qtdeAtivo: 10, valor: 10.90,
   },
@@ -25,5 +25,5 @@ const ativosUsuario = [[
 ]];
 
 module.exports = {
-  ativo, arrayVazio, resultSetHeader, ativosUsuario,
+  ativo, arrayVazio, arrayDeUmObjeto, arrayDeObjetos,
 };
