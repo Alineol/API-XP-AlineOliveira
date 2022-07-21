@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:mocha": " nyc --all --include models --include services --include controllers mocha --check-leaks \"src/test/**/*.spec.js\"",
+    "test": "mocha \"src/test/**/*.spec.js\"",
     "dev": "nodemon --watch \"./src/**\" --ext \"ts,js\" --ignore \"src/**/*.spec.js,src/**/*.json\" --exec \"ts-node src/index.js\"",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "commit": "cz"
+    "commit": "cz",
+    "coverage": "nyc npm run test"
   },
   "repository": {
     "type": "git",
