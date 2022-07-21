@@ -3,8 +3,8 @@ const userService = require('./userService');
 const helpers = require('../helpers');
 const ativoUsuarioModel = require('../models/ativoUsuarioModel');
 
-const pegaAtivosCorretoraporCodAtivo = async (cod) => {
-  const [ativo] = await ativoModel.pegaAtivosCorretoraporCodAtivo(cod);
+const pegaAtivosCorretoraPorCodAtivo = async (cod) => {
+  const [ativo] = await ativoModel.pegaAtivosCorretoraPorCodAtivo(cod);
   if (!ativo) {
     return 'Ativo não encontrado';
   }
@@ -33,18 +33,18 @@ const sellAtivosCorretora = async (
   const authorization = await userService.checkAuthorization(token, codCliente);
   if (!authorization) return 'Token invalido, sem autorização';
 
-  const [ativoToSell] = await ativoModel.pegaAtivosCorretoraporCodAtivo(codAtivo);
+  const [ativoToSell] = await ativoModel.pegaAtivosCorretoraPorCodAtivo(codAtivo);
   if (!ativoToSell) return 'Ativo não encontrado';
 
   const checkQtde = helpers.checkAtivosQtdeToDecrement(ativoToSell.qtdeAtivo, qtdeAtivo);
   if (checkQtde === false) return 'Quantidade de ativos excedida';
   // ! lógica para aumentar a quantidade de ativos do cliente após uma compra
   updateAtivoUsuario({ codAtivo, qtdeAtivo, valor: ativoToSell.valor }, codCliente);
-  await ativoModel.decrementAtivocCorretoraQtde(codAtivo, qtdeAtivo);
+  await ativoModel.decrementarAtivosCorretotaQtde(codAtivo, qtdeAtivo);
   return 'ok';
 };
 
 module.exports = {
-  pegaAtivosCorretoraporCodAtivo,
+  pegaAtivosCorretoraPorCodAtivo,
   sellAtivosCorretora,
 };

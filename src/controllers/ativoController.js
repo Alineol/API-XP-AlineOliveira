@@ -1,9 +1,9 @@
 const helpers = require('../helpers');
 const ativoService = require('../services/ativoService');
 
-const pegaAtivosCorretoraporCodAtivo = async (req, res) => {
+const pegaAtivosCorretoraPorCodAtivo = async (req, res) => {
   const { codAtivo } = req.params;
-  const ativo = await ativoService.pegaAtivosCorretoraporCodAtivo((codAtivo));
+  const ativo = await ativoService.pegaAtivosCorretoraPorCodAtivo((codAtivo));
   if (ativo === 'Ativo não encontrado') return res.status(404).json({ message: ativo });
   return res.status(200).json(ativo);
 };
@@ -21,6 +21,6 @@ const sellAtivoCorretora = async (req, res) => {
   return res.status(response.code).json({ message: response.message });
 };
 module.exports = {
-  pegaAtivosCorretoraporCodAtivo,
+  pegaAtivosCorretoraPorCodAtivo,
   sellAtivoCorretora,
 };
