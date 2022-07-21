@@ -1,8 +1,8 @@
-const ativo = { codAtivo: 1, qtdeAtivo: 10, valor: 27.50 };
+const ativo = [{ codAtivo: 1, qtdeAtivo: 10, valor: 27.50 }];
 
-const arrayVazio = [];
+const arrayVazio = [[]];
 
-const resultSetHeader = {
+const resultSetHeader = [{
   fieldCount: 0,
   affectedRows: 1,
   insertId: 0,
@@ -10,9 +10,9 @@ const resultSetHeader = {
   serverStatus: 2,
   warningStatus: 0,
   changedRows: 1,
-};
+}];
 
-const ativoUsuario = [
+const ativosUsuario = [[
   {
     codCliente: 1, codAtivo: 2, qtdeAtivo: 10, valor: 10.90,
   },
@@ -22,8 +22,8 @@ const ativoUsuario = [
   {
     codCliente: 3, codAtivo: 4, qtdeAtivo: 1, valor: 2900.00,
   },
-];
+]];
 
 module.exports = {
-  ativo, arrayVazio, resultSetHeader, ativoUsuario,
+  ativo, arrayVazio, resultSetHeader, ativosUsuario,
 };
