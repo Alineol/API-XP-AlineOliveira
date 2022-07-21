@@ -28,7 +28,6 @@ const createAtivoUsuario = async (ativo, codCliente) => {
 
 const incrementQtdeAtivo = async (ativo, codCliente) => {
   const { codAtivo, qtdeAtivo } = ativo;
-  console.log(qtdeAtivo);
   const q = `UPDATE ${bd} SET qtdeAtivo = qtdeAtivo + ? WHERE codCliente = ? AND codAtivo = ?;`;
   const [update] = await connection.execute(q, [qtdeAtivo, codCliente, codAtivo]);
   return update;
