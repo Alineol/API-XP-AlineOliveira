@@ -5,6 +5,7 @@ const { expect } = require('chai');
 const ativoModel = require('../../../models/ativoModel');
 const ativoService = require('../../../services/ativoService');
 const userService = require('../../../services/userService');
+// const ativoUsuarioModel = require('../../../models/ativoUsuarioModel');
 const { ativo } = require('../mocks');
 
 describe('Ao pegar ativos da corretora por codAtivo(service):', () => {
@@ -103,3 +104,4 @@ describe('Ao tentar realizar a venda de um ativo(service):', () => {
     });
   });
 });
+// TODO teste da função atualizar ou registrar usuario
