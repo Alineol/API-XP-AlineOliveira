@@ -80,7 +80,7 @@ describe('Ao inserir um novo ativoUsuario na tabela', () => {
 
     it('retorna um array vazio.', async () => {
       const response = await ativoUsuarioModel
-        .createAtivoUsuario({ codAtivo: 1, valor: 25.00, qtdeAtivo: 5 }, 1);
+        .criarAtivoUsuario({ codAtivo: 1, valor: 25.00, qtdeAtivo: 5 }, 1);
       expect(response).to.be.an('array');
       expect(response).to.be.empty;
     });
@@ -113,7 +113,7 @@ describe('Ao aumentar a quantidade de ativos do usuario', () => {
 
     it('retorna um array vazio.', async () => {
       const response = await ativoUsuarioModel
-        .incrementQtdeAtivo(1, 1);
+        .incrementarQtdeAtivo(1, 1);
       expect(response).to.be.an('array');
       expect(response).to.be.empty;
     });
@@ -146,7 +146,7 @@ describe('Ao diminuir a quantidade de ativos do usuario', () => {
 
     it('retorna um array vazio.', async () => {
       const response = await ativoUsuarioModel
-        .decrementAtivosUsuarioQtde(1, 1);
+        .decrementarAtivosUsuarioQtde(1, 1);
       expect(response).to.be.an('array');
       expect(response).to.be.empty;
     });
@@ -161,7 +161,7 @@ describe('Ao diminuir a quantidade de ativos do usuario', () => {
 
     it('retorna um objeto não vazio.', async () => {
       const response = await ativoUsuarioModel
-        .decrementAtivosUsuarioQtde(1, 1);
+        .decrementarAtivosUsuarioQtde(1, 1);
       expect(response).to.be.an('object');
       expect(response).not.to.be.empty;
     });

@@ -107,12 +107,12 @@ describe('Ao tentar vender ativos do usuario(service):', () => {
     before(() => {
       sinon.stub(userService, 'checkAuthorization').resolves(true);
       sinon.stub(ativoUsuarioModel, 'pegarAtivosUsuarioPorCodClienteAndCodAtivo').resolves(arrayDeAtivosUsuario[0]);
-      sinon.stub(ativoUsuarioModel, 'decrementAtivosUsuarioQtde').resolves('');
+      sinon.stub(ativoUsuarioModel, 'decrementarAtivosUsuarioQtde').resolves('');
     });
     after(() => {
       userService.checkAuthorization.restore();
       ativoUsuarioModel.pegarAtivosUsuarioPorCodClienteAndCodAtivo.restore();
-      ativoUsuarioModel.decrementAtivosUsuarioQtde.restore();
+      ativoUsuarioModel.decrementarAtivosUsuarioQtde.restore();
     });
 
     it('retorna uma string com a frase: "ok"', async () => {

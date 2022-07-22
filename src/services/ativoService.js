@@ -19,8 +19,8 @@ const atualizarOuRegistrarAtivoUsuario = async (ativo, codCliente) => {
   const { codAtivo } = ativo;
   ativoUsuarioModel.pegarAtivosUsuarioPorCodClienteAndCodAtivo(codAtivo, codCliente).then((result) => {
     if (result.length === 0) {
-      ativoUsuarioModel.createAtivoUsuario(ativo, codCliente);
-    } else { ativoUsuarioModel.incrementQtdeAtivo(ativo, codCliente); }
+      ativoUsuarioModel.criarAtivoUsuario(ativo, codCliente);
+    } else { ativoUsuarioModel.incrementarQtdeAtivo(ativo, codCliente); }
   });
 };
 
