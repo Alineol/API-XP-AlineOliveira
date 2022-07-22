@@ -24,6 +24,6 @@ route.post(
 route.get(
   '/ativos/:codCliente',
   mid.validateAtivosClienteParams,
-  ativoUsuarioController.getAtivosUsuarioByCodCliente,
+  ativoUsuarioController.pegarAtivosUsuarioPorCodCliente,
 );
 module.exports = route;

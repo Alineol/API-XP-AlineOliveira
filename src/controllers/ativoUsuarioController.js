@@ -1,11 +1,11 @@
 const ativoUsuarioService = require('../services/ativoUsuarioService');
 const helpers = require('../helpers');
 
-const getAtivosUsuarioByCodCliente = async (req, res) => {
+const pegarAtivosUsuarioPorCodCliente = async (req, res) => {
   const { codCliente } = req.params;
   const { authorization } = req.headers;
   const ativos = await ativoUsuarioService
-    .getAtivosUsuarioByCodCliente(Number(codCliente), authorization);
+    .pegarAtivosUsuarioPorCodCliente(Number(codCliente), authorization);
   if (ativos === 'Token invalido, sem autorização') {
     return res.status(401).json({ message: ativos });
   }
@@ -26,6 +26,6 @@ const sellAtivosUsuarios = async (req, res) => {
 };
 
 module.exports = {
-  getAtivosUsuarioByCodCliente,
+  pegarAtivosUsuarioPorCodCliente,
   sellAtivosUsuarios,
 };

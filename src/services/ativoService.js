@@ -17,7 +17,7 @@ const pegaAtivosCorretoraPorCodAtivo = async (cod) => {
 
 const atualizarOuRegistrarAtivoUsuario = async (ativo, codCliente) => {
   const { codAtivo } = ativo;
-  ativoUsuarioModel.getAtivosUsuarioByCodClienteAndCodAtivo(codAtivo, codCliente).then((result) => {
+  ativoUsuarioModel.pegarAtivosUsuarioPorCodClienteAndCodAtivo(codAtivo, codCliente).then((result) => {
     if (result.length === 0) {
       ativoUsuarioModel.createAtivoUsuario(ativo, codCliente);
     } else { ativoUsuarioModel.incrementQtdeAtivo(ativo, codCliente); }

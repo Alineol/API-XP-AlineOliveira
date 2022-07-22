@@ -16,7 +16,7 @@ describe('Ao pegar ativos do usuario pelo codigo do cliente:', () => {
     });
 
     it('retorna um array vazio.', async () => {
-      const response = await ativoUsuarioModel.getAtivosUsuarioByCodCliente(1);
+      const response = await ativoUsuarioModel.pegarAtivosUsuarioPorCodCliente(1);
       expect(response).to.be.an('array');
       expect(response).to.be.empty;
     });
@@ -30,7 +30,7 @@ describe('Ao pegar ativos do usuario pelo codigo do cliente:', () => {
     });
 
     it('retorna um array de objetos.', async () => {
-      const response = await ativoUsuarioModel.getAtivosUsuarioByCodCliente(1);
+      const response = await ativoUsuarioModel.pegarAtivosUsuarioPorCodCliente(1);
       expect(response).to.be.an('array');
       expect(response[0]).to.be.an('object');
       expect(response[1]).to.be.an('object');
@@ -48,7 +48,7 @@ describe('Ao pegar ativos do usuario pelo codigo do cliente e do ativo:', () => 
     });
 
     it('retorna um array vazio.', async () => {
-      const response = await ativoUsuarioModel.getAtivosUsuarioByCodClienteAndCodAtivo(1, 1);
+      const response = await ativoUsuarioModel.pegarAtivosUsuarioPorCodClienteAndCodAtivo(1, 1);
       expect(response).to.be.an('array');
       expect(response).to.be.empty;
     });
@@ -62,7 +62,7 @@ describe('Ao pegar ativos do usuario pelo codigo do cliente e do ativo:', () => 
     });
 
     it('retorna um objeto não vazio.', async () => {
-      const response = await ativoUsuarioModel.getAtivosUsuarioByCodCliente(1, 1);
+      const response = await ativoUsuarioModel.pegarAtivosUsuarioPorCodCliente(1, 1);
       expect(response).to.be.an('object');
       expect(response).not.to.be.empty;
     });
@@ -95,7 +95,7 @@ describe('Ao inserir um novo ativoUsuario na tabela', () => {
 
     it('retorna um objeto não vazio.', async () => {
       const response = await ativoUsuarioModel
-        .getAtivosUsuarioByCodCliente({ codAtivo: 1, valor: 25.00, qtdeAtivo: 5 }, 1);
+        .pegarAtivosUsuarioPorCodCliente({ codAtivo: 1, valor: 25.00, qtdeAtivo: 5 }, 1);
       expect(response).to.be.an('object');
       expect(response).not.to.be.empty;
     });
@@ -128,7 +128,7 @@ describe('Ao aumentar a quantidade de ativos do usuario', () => {
 
     it('retorna um objeto não vazio.', async () => {
       const response = await ativoUsuarioModel
-        .getAtivosUsuarioByCodCliente(1, 1);
+        .pegarAtivosUsuarioPorCodCliente(1, 1);
       expect(response).to.be.an('object');
       expect(response).not.to.be.empty;
     });

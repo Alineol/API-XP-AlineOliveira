@@ -2,14 +2,14 @@ const connection = require('./connection');
 
 const bd = 'XPCorretora.AtivosUsuarios';
 
-const getAtivosUsuarioByCodCliente = async (codCliente) => {
+const pegarAtivosUsuarioPorCodCliente = async (codCliente) => {
   // TODO mudar essa query depois
   const query = 'SELECT * FROM XPCorretora.AtivosUsuarios WHERE codCliente = ?;';
   const [ativos] = await connection.execute(query, [codCliente]);
   return ativos;
 };
 
-const getAtivosUsuarioByCodClienteAndCodAtivo = async (
+const pegarAtivosUsuarioPorCodClienteAndCodAtivo = async (
   codAtivo,
   codCliente,
 ) => {
@@ -44,8 +44,8 @@ const decrementAtivosUsuarioQtde = async (
 };
 
 module.exports = {
-  getAtivosUsuarioByCodCliente,
-  getAtivosUsuarioByCodClienteAndCodAtivo,
+  pegarAtivosUsuarioPorCodCliente,
+  pegarAtivosUsuarioPorCodClienteAndCodAtivo,
   decrementAtivosUsuarioQtde,
   createAtivoUsuario,
   incrementQtdeAtivo,

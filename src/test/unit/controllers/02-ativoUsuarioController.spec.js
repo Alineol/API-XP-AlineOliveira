@@ -15,14 +15,14 @@ describe('Ao pegar ativos do usuario  pelo codCliente(controller):', () => {
       res.json = sinon.stub().returns();
       req.params = { codCliente: 1 };
       req.headers = { authorization: 'affsfgasgfgag' };
-      sinon.stub(ativoUsuarioService, 'getAtivosUsuarioByCodCliente').resolves('Token invalido, sem autorização');
+      sinon.stub(ativoUsuarioService, 'pegarAtivosUsuarioPorCodCliente').resolves('Token invalido, sem autorização');
     });
     after(() => {
-      ativoUsuarioService.getAtivosUsuarioByCodCliente.restore();
+      ativoUsuarioService.pegarAtivosUsuarioPorCodCliente.restore();
     });
 
     it('retorna status 401 e um objeto no json.', async () => {
-      await ativoUsuarioController.getAtivosUsuarioByCodCliente(req, res);
+      await ativoUsuarioController.pegarAtivosUsuarioPorCodCliente(req, res);
       expect(res.status.calledWith(401)).to.be.true;
       expect(res.json.calledWith(sinon.match.object)).to.be.equal(true);
     });
@@ -36,14 +36,14 @@ describe('Ao pegar ativos do usuario  pelo codCliente(controller):', () => {
       res.json = sinon.stub().returns();
       req.params = { codCliente: 1 };
       req.headers = { authorization: 'affsfgasgfgag' };
-      sinon.stub(ativoUsuarioService, 'getAtivosUsuarioByCodCliente').resolves(arrayDeAtivosUsuario[0]);
+      sinon.stub(ativoUsuarioService, 'pegarAtivosUsuarioPorCodCliente').resolves(arrayDeAtivosUsuario[0]);
     });
     after(() => {
-      ativoUsuarioService.getAtivosUsuarioByCodCliente.restore();
+      ativoUsuarioService.pegarAtivosUsuarioPorCodCliente.restore();
     });
 
     it('retorna status 200 e um array no json.', async () => {
-      await ativoUsuarioController.getAtivosUsuarioByCodCliente(req, res);
+      await ativoUsuarioController.pegarAtivosUsuarioPorCodCliente(req, res);
       expect(res.status.calledWith(200)).to.be.true;
       expect(res.json.calledWith(sinon.match.array)).to.be.equal(true);
     });
