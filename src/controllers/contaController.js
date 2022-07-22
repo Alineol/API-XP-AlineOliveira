@@ -2,10 +2,10 @@ const contaService = require('../services/contaService');
 
 const invalidTokenMessage = 'Token invalido, sem autorização';
 
-const getByCodCliente = async (req, res) => {
+const pegarContaPorCodCliente = async (req, res) => {
   const { codCliente } = req.params;
   const { authorization } = req.headers;
-  const account = await contaService.getByCodCliente(Number(codCliente), authorization);
+  const account = await contaService.pegarContaPorCodCliente(Number(codCliente), authorization);
   if (account === invalidTokenMessage) return res.status(401).json({ message: account });
   return res.status(200).json(account);
 };
@@ -29,7 +29,7 @@ const putMoney = async (req, res) => {
 };
 
 module.exports = {
-  getByCodCliente,
+  pegarContaPorCodCliente,
   getMoney,
   putMoney,
 };

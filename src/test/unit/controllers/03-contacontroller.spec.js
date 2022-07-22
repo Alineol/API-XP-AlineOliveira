@@ -14,13 +14,13 @@ describe('Ao tentar pegar conta pelo codigo do cliente(service):', () => {
       res.json = sinon.stub().returns();
       req.params = { codCliente: 1 };
       req.headers = { authorization: 'afdaffajffjfofj' };
-      sinon.stub(contaService, 'getByCodCliente').resolves('Token invalido, sem autorização');
+      sinon.stub(contaService, 'pegarContaPorCodCliente').resolves('Token invalido, sem autorização');
     });
     after(() => {
-      contaService.getByCodCliente.restore();
+      contaService.pegarContaPorCodCliente.restore();
     });
     it('retorna status 401 e um objeto no json.', async () => {
-      await contaController.getByCodCliente(req, res);
+      await contaController.pegarContaPorCodCliente(req, res);
       expect(res.status.calledWith(401)).to.be.true;
       expect(res.json.calledWith(sinon.match.object)).to.be.equal(true);
     });
@@ -33,13 +33,13 @@ describe('Ao tentar pegar conta pelo codigo do cliente(service):', () => {
       res.json = sinon.stub().returns();
       req.params = { codCliente: 1 };
       req.headers = { authorization: 'afdaffajffjfofj' };
-      sinon.stub(contaService, 'getByCodCliente').resolves({ codCliente: 1, valor: 2500.00 });
+      sinon.stub(contaService, 'pegarContaPorCodCliente').resolves({ codCliente: 1, valor: 2500.00 });
     });
     after(() => {
-      contaService.getByCodCliente.restore();
+      contaService.pegarContaPorCodCliente.restore();
     });
     it('retorna status 200 e um objeto no json.', async () => {
-      await contaController.getByCodCliente(req, res);
+      await contaController.pegarContaPorCodCliente(req, res);
       expect(res.status.calledWith(200)).to.be.true;
       expect(res.json.calledWith(sinon.match.object)).to.be.equal(true);
     });

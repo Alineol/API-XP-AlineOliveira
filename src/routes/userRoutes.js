@@ -7,7 +7,7 @@ const ativoUsuarioController = require('../controllers/ativoUsuarioController');
 
 const route = Router();
 
-route.get('/conta/:codCliente', contaController.getByCodCliente);
+route.get('/conta/:codCliente', contaController.pegarContaPorCodCliente);
 
 route.post(
   '/conta/saque',

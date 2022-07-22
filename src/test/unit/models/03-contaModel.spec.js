@@ -16,7 +16,7 @@ describe('Ao pegar conta pelo codigo do cliente:', () => {
     });
 
     it('retorna um array vazio.', async () => {
-      const response = await contaModel.getByCodCliente(1);
+      const response = await contaModel.pegarContaPorCodCliente(1);
       expect(response).to.be.an('array');
       expect(response).to.be.empty;
     });
@@ -30,7 +30,7 @@ describe('Ao pegar conta pelo codigo do cliente:', () => {
     });
 
     it('retorna um objeto não vazio.', async () => {
-      const response = await contaModel.getByCodCliente(1);
+      const response = await contaModel.pegarContaPorCodCliente(1);
       expect(response).to.be.an('object');
       expect(response).not.to.be.empty;
     });

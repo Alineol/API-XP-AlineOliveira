@@ -21,22 +21,22 @@ describe('Ao tentar pegar conta pelo codigo do cliente(service):', () => {
     });
 
     it('retorna uma string com a frase "Token invalido, sem autorização"', async () => {
-      const response = await contaService.getByCodCliente(codCliente, token);
+      const response = await contaService.pegarContaPorCodCliente(codCliente, token);
       expect(response).to.be.equal('Token invalido, sem autorização');
     });
   });
   describe('- Se conseguir efetuar a ação com sucesso', () => {
     before(() => {
       sinon.stub(userService, 'checkAuthorization').resolves(true);
-      sinon.stub(contaModel, 'getByCodCliente').resolves(arrayDeConta[0]);
+      sinon.stub(contaModel, 'pegarContaPorCodCliente').resolves(arrayDeConta[0]);
     });
     after(() => {
       userService.checkAuthorization.restore();
-      contaModel.getByCodCliente.restore();
+      contaModel.pegarContaPorCodCliente.restore();
     });
 
     it('retorna um objeto.', async () => {
-      const response = await contaService.getByCodCliente(codCliente, token);
+      const response = await contaService.pegarContaPorCodCliente(codCliente, token);
       expect(response).to.be.an('object');
       expect(response.codCliente).to.be.an('number');
       expect(response.valor).to.be.an('number');

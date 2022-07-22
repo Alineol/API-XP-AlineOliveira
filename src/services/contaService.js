@@ -3,11 +3,11 @@ const userService = require('./userService');
 
 const athorizationMessage = 'Token invalido, sem autorização';
 
-const getByCodCliente = async (codCliente, token) => {
+const pegarContaPorCodCliente = async (codCliente, token) => {
   const authorization = await userService.checkAuthorization(token, codCliente);
   if (!authorization) return athorizationMessage;
 
-  const [account] = await contaModel.getByCodCliente(codCliente);
+  const [account] = await contaModel.pegarContaPorCodCliente(codCliente);
   return {
     codCliente: account.codCliente,
     valor: Number(account.valor),
@@ -29,7 +29,7 @@ const putMoney = async (codCliente, value, token) => {
 };
 
 module.exports = {
-  getByCodCliente,
+  pegarContaPorCodCliente,
   getMoney,
   putMoney,
 };
