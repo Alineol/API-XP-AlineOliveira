@@ -2,6 +2,14 @@ const ativo = [{ codAtivo: 1, qtdeAtivo: 10, valor: 27.50 }];
 
 const arrayVazio = [[]];
 
+const arrayDeAtivos = [[
+  {
+    codAtivo: 1, qtdeAtivo: 10, valor: 20.50,
+  }, {
+    codAtivo: 2, qtdeAtivo: 20, valor: 17.50,
+  },
+]];
+
 const arrayDeUmObjeto = [{
   fieldCount: 0,
   affectedRows: 1,
@@ -28,5 +36,5 @@ const arrayDeAtivosUsuario = [[
 ]];
 
 module.exports = {
-  ativo, arrayVazio, arrayDeUmObjeto, arrayDeAtivosUsuario, arrayDeConta,
+  ativo, arrayVazio, arrayDeUmObjeto, arrayDeAtivosUsuario, arrayDeConta, arrayDeAtivos,
 };
