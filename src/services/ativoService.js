@@ -15,7 +15,7 @@ const pegaAtivosCorretoraPorCodAtivo = async (cod) => {
   };
 };
 
-const updateAtivoUsuario = (ativo, codCliente) => {
+const atualizarOuRegistrarAtivoUsuario = async (ativo, codCliente) => {
   const { codAtivo } = ativo;
   ativoUsuarioModel.getAtivosUsuarioByCodClienteAndCodAtivo(codAtivo, codCliente).then((result) => {
     if (result.length === 0) {
@@ -39,7 +39,7 @@ const sellAtivosCorretora = async (
   const checkQtde = helpers.checkAtivosQtdeToDecrement(ativoToSell.qtdeAtivo, qtdeAtivo);
   if (checkQtde === false) return 'Quantidade de ativos excedida';
   // ! lógica para aumentar a quantidade de ativos do cliente após uma compra
-  updateAtivoUsuario({ codAtivo, qtdeAtivo, valor: ativoToSell.valor }, codCliente);
+  atualizarOuRegistrarAtivoUsuario({ codAtivo, qtdeAtivo, valor: ativoToSell.valor }, codCliente);
   await ativoModel.decrementarAtivosCorretotaQtde(codAtivo, qtdeAtivo);
   return 'ok';
 };
@@ -47,4 +47,5 @@ const sellAtivosCorretora = async (
 module.exports = {
   pegaAtivosCorretoraPorCodAtivo,
   sellAtivosCorretora,
+  atualizarOuRegistrarAtivoUsuario,
 };
