@@ -4,7 +4,7 @@ const sinon = require('sinon');
 const { expect } = require('chai');
 const ativoUsuarioModel = require('../../../models/ativoUsuarioModel');
 const connection = require('../../../models/connection');
-const { arrayVazio, arrayDeUmObjeto, arrayDeObjetos } = require('../mocks');
+const { arrayVazio, arrayDeUmObjeto, arrayDeAtivosUsuario } = require('../mocks');
 
 describe('Ao pegar ativos do usuario pelo codigo do cliente:', () => {
   describe('- Quando o cliente não existe:', () => {
@@ -23,7 +23,7 @@ describe('Ao pegar ativos do usuario pelo codigo do cliente:', () => {
   });
   describe('- Quando o cliente existe:', () => {
     before(() => {
-      sinon.stub(connection, 'execute').resolves(arrayDeObjetos);
+      sinon.stub(connection, 'execute').resolves(arrayDeAtivosUsuario);
     });
     after(() => {
       connection.execute.restore();
@@ -55,7 +55,7 @@ describe('Ao pegar ativos do usuario pelo codigo do cliente e do ativo:', () => 
   });
   describe('- Quando encontra um ativo nessas condições:', () => {
     before(() => {
-      sinon.stub(connection, 'execute').resolves(arrayDeObjetos[0]);
+      sinon.stub(connection, 'execute').resolves(arrayDeAtivosUsuario[0]);
     });
     after(() => {
       connection.execute.restore();
