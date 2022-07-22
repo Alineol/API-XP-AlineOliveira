@@ -14,7 +14,13 @@ const decrementarAtivosCorretotaQtde = async (codAtivo, qtdeAtivo) => {
   return update;
 };
 
+const pegarTodosOsAtivosCorretora = async () => {
+  const [ativos] = await connection.execute('SELECT * FROM XPCorretora.AtivosCorretora;');
+  return ativos;
+};
+
 module.exports = {
   pegaAtivosCorretoraPorCodAtivo,
   decrementarAtivosCorretotaQtde,
+  pegarTodosOsAtivosCorretora,
 };
