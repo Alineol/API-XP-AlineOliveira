@@ -12,7 +12,7 @@ route.get('/conta/:codCliente', contaController.pegarContaPorCodCliente);
 route.post(
   '/conta/saque',
   accountMid.validateBody,
-  contaController.getMoney,
+  contaController.sacarDaConta,
 );
 
 route.post(

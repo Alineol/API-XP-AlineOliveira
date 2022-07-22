@@ -55,13 +55,13 @@ describe('Ao tentar sacar dinheiro da conta(service):', () => {
       res.json = sinon.stub().returns();
       req.body = { codCliente: 1, valor: 200 };
       req.headers = { authorization: 'afdaffajffjfofj' };
-      sinon.stub(contaService, 'getMoney').resolves('Token invalido, sem autorização');
+      sinon.stub(contaService, 'sacarDaConta').resolves('Token invalido, sem autorização');
     });
     after(() => {
-      contaService.getMoney.restore();
+      contaService.sacarDaConta.restore();
     });
     it('retorna status 401 e um objeto no json.', async () => {
-      await contaController.getMoney(req, res);
+      await contaController.sacarDaConta(req, res);
       expect(res.status.calledWith(401)).to.be.true;
       expect(res.json.calledWith(sinon.match.object)).to.be.equal(true);
     });
@@ -74,13 +74,13 @@ describe('Ao tentar sacar dinheiro da conta(service):', () => {
       res.json = sinon.stub().returns();
       req.body = { codCliente: 1, valor: 200 };
       req.headers = { authorization: 'afdaffajffjfofj' };
-      sinon.stub(contaService, 'getMoney').resolves({});
+      sinon.stub(contaService, 'sacarDaConta').resolves({});
     });
     after(() => {
-      contaService.getMoney.restore();
+      contaService.sacarDaConta.restore();
     });
     it('retorna status 200 e um objeto no json.', async () => {
-      await contaController.getMoney(req, res);
+      await contaController.sacarDaConta(req, res);
       expect(res.status.calledWith(200)).to.be.true;
       expect(res.json.calledWith(sinon.match.object)).to.be.equal(true);
     });

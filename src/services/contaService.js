@@ -14,7 +14,7 @@ const pegarContaPorCodCliente = async (codCliente, token) => {
   };
 };
 
-const getMoney = async (codCliente, value, token) => {
+const sacarDaConta = async (codCliente, value, token) => {
   const authorization = await userService.checkAuthorization(token, codCliente);
   if (!authorization) return athorizationMessage;
   return contaModel.decrementAccount(codCliente, value);
@@ -30,6 +30,6 @@ const putMoney = async (codCliente, value, token) => {
 
 module.exports = {
   pegarContaPorCodCliente,
-  getMoney,
+  sacarDaConta,
   putMoney,
 };

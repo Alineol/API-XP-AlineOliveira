@@ -10,10 +10,10 @@ const pegarContaPorCodCliente = async (req, res) => {
   return res.status(200).json(account);
 };
 
-const getMoney = async (req, res) => {
+const sacarDaConta = async (req, res) => {
   const { authorization } = req.headers;
   const { codCliente, valor } = req.body;
-  const transaction = await contaService.getMoney(codCliente, valor, authorization);
+  const transaction = await contaService.sacarDaConta(codCliente, valor, authorization);
   if (transaction === invalidTokenMessage) return res.status(401).json({ message: transaction });
 
   return res.status(200).json({ message: 'Saque efetuado com sucesso!' });
@@ -30,6 +30,6 @@ const putMoney = async (req, res) => {
 
 module.exports = {
   pegarContaPorCodCliente,
-  getMoney,
+  sacarDaConta,
   putMoney,
 };
