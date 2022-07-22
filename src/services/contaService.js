@@ -17,8 +17,8 @@ const getByCodCliente = async (codCliente, token) => {
 const getMoney = async (codCliente, value, token) => {
   const authorization = await userService.checkAuthorization(token, codCliente);
   if (!authorization) return athorizationMessage;
-
   return contaModel.decrementAccount(codCliente, value);
+  // Todo não permitir que o usuario tire mais do que ele tem
 };
 
 const putMoney = async (codCliente, value, token) => {
