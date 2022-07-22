@@ -12,10 +12,10 @@ const pegarAtivosUsuarioPorCodCliente = async (req, res) => {
   return res.status(200).json(ativos);
 };
 
-const sellAtivosUsuarios = async (req, res) => {
+const venderAtivosUsuario = async (req, res) => {
   const { codCliente, codAtivo, qtdeAtivo } = req.body;
   const { authorization } = req.headers;
-  const sell = await ativoUsuarioService.sellAtivosUsuarios(
+  const sell = await ativoUsuarioService.venderAtivosUsuario(
     codAtivo,
     codCliente,
     qtdeAtivo,
@@ -27,5 +27,5 @@ const sellAtivosUsuarios = async (req, res) => {
 
 module.exports = {
   pegarAtivosUsuarioPorCodCliente,
-  sellAtivosUsuarios,
+  venderAtivosUsuario,
 };

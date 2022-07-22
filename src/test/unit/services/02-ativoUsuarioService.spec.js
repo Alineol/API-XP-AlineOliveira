@@ -59,7 +59,7 @@ describe('Ao tentar vender ativos do usuario(service):', () => {
     });
 
     it('retorna uma string com a frase "Token invalido, sem autorização"', async () => {
-      const response = await ativoUsuarioService.sellAtivosUsuarios();
+      const response = await ativoUsuarioService.venderAtivosUsuario();
       expect(response).to.be.equal('Token invalido, sem autorização');
     });
   });
@@ -74,7 +74,7 @@ describe('Ao tentar vender ativos do usuario(service):', () => {
     });
 
     it('retorna uma string com a frase: "Ativo não encontrado"', async () => {
-      const response = await ativoUsuarioService.sellAtivosUsuarios(
+      const response = await ativoUsuarioService.venderAtivosUsuario(
         codAtivo,
         codCliente,
         qtdeAtivo5,
@@ -94,7 +94,7 @@ describe('Ao tentar vender ativos do usuario(service):', () => {
     });
 
     it('retorna uma string com a frase: "Quantidade de ativos excedida"', async () => {
-      const response = await ativoUsuarioService.sellAtivosUsuarios(
+      const response = await ativoUsuarioService.venderAtivosUsuario(
         codAtivo,
         codCliente,
         qtdeAtivo11,
@@ -116,7 +116,7 @@ describe('Ao tentar vender ativos do usuario(service):', () => {
     });
 
     it('retorna uma string com a frase: "ok"', async () => {
-      const response = await ativoUsuarioService.sellAtivosUsuarios(
+      const response = await ativoUsuarioService.venderAtivosUsuario(
         codAtivo,
         codCliente,
         qtdeAtivo5,

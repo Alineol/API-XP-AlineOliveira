@@ -59,14 +59,14 @@ describe('Ao tentar realizar a venda de um ativo do usuario(controller):', () =>
       res.json = sinon.stub().returns();
       req.body = { codCliente: 1, codAtivo: 1, qtdeAtivo: 1 };
       req.headers = { authorization: 'jdadajfajf' };
-      sinon.stub(ativoUsuarioService, 'sellAtivosUsuarios').resolves('Token invalido, sem autorização');
+      sinon.stub(ativoUsuarioService, 'venderAtivosUsuario').resolves('Token invalido, sem autorização');
     });
     after(() => {
-      ativoUsuarioService.sellAtivosUsuarios.restore();
+      ativoUsuarioService.venderAtivosUsuario.restore();
     });
 
     it('retorna status 401 e um objeto no json.', async () => {
-      await ativoUsuarioController.sellAtivosUsuarios(req, res);
+      await ativoUsuarioController.venderAtivosUsuario(req, res);
       expect(res.status.calledWith(401)).to.be.true;
       expect(res.json.calledWith(sinon.match.object)).to.be.equal(true);
     });
@@ -79,14 +79,14 @@ describe('Ao tentar realizar a venda de um ativo do usuario(controller):', () =>
       res.json = sinon.stub().returns();
       req.body = { codCliente: 1, codAtivo: 1, qtdeAtivo: 1 };
       req.headers = { authorization: 'jdadajfajf' };
-      sinon.stub(ativoUsuarioService, 'sellAtivosUsuarios').resolves('Ativo não encontrado');
+      sinon.stub(ativoUsuarioService, 'venderAtivosUsuario').resolves('Ativo não encontrado');
     });
     after(() => {
-      ativoUsuarioService.sellAtivosUsuarios.restore();
+      ativoUsuarioService.venderAtivosUsuario.restore();
     });
 
     it('retorna status 404 e um objeto no json.', async () => {
-      await ativoUsuarioController.sellAtivosUsuarios(req, res);
+      await ativoUsuarioController.venderAtivosUsuario(req, res);
       expect(res.status.calledWith(404)).to.be.true;
       expect(res.json.calledWith(sinon.match.object)).to.be.equal(true);
     });
@@ -99,14 +99,14 @@ describe('Ao tentar realizar a venda de um ativo do usuario(controller):', () =>
       res.json = sinon.stub().returns();
       req.body = { codCliente: 1, codAtivo: 1, qtdeAtivo: 1 };
       req.headers = { authorization: 'jdadajfajf' };
-      sinon.stub(ativoUsuarioService, 'sellAtivosUsuarios').resolves('Quantidade de ativos excedida');
+      sinon.stub(ativoUsuarioService, 'venderAtivosUsuario').resolves('Quantidade de ativos excedida');
     });
     after(() => {
-      ativoUsuarioService.sellAtivosUsuarios.restore();
+      ativoUsuarioService.venderAtivosUsuario.restore();
     });
 
     it('retorna status 400 e um objeto no json.', async () => {
-      await ativoUsuarioController.sellAtivosUsuarios(req, res);
+      await ativoUsuarioController.venderAtivosUsuario(req, res);
       expect(res.status.calledWith(400)).to.be.true;
       expect(res.json.calledWith(sinon.match.object)).to.be.equal(true);
     });
@@ -119,14 +119,14 @@ describe('Ao tentar realizar a venda de um ativo do usuario(controller):', () =>
       res.json = sinon.stub().returns();
       req.body = { codCliente: 1, codAtivo: 1, qtdeAtivo: 1 };
       req.headers = { authorization: 'jdadajfajf' };
-      sinon.stub(ativoUsuarioService, 'sellAtivosUsuarios').resolves('ok');
+      sinon.stub(ativoUsuarioService, 'venderAtivosUsuario').resolves('ok');
     });
     after(() => {
-      ativoUsuarioService.sellAtivosUsuarios.restore();
+      ativoUsuarioService.venderAtivosUsuario.restore();
     });
 
     it('retorna status 200 e um objeto no json.', async () => {
-      await ativoUsuarioController.sellAtivosUsuarios(req, res);
+      await ativoUsuarioController.venderAtivosUsuario(req, res);
       expect(res.status.calledWith(200)).to.be.true;
       expect(res.json.calledWith(sinon.match.object)).to.be.equal(true);
     });

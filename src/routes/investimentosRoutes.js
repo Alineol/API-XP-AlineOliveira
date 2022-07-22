@@ -8,7 +8,7 @@ const route = Router();
 route.post(
   '/vender',
   investimentosMiddleware.validateBodyInvestimentos,
-  ativoUsuarioController.sellAtivosUsuarios,
+  ativoUsuarioController.venderAtivosUsuario,
 );
 
 route.post(

@@ -15,7 +15,7 @@ const pegarAtivosUsuarioPorCodCliente = async (cod, token) => {
   }));
 };
 
-const sellAtivosUsuarios = async (
+const venderAtivosUsuario = async (
   codAtivo,
   codCliente,
   qtdeAtivo,
@@ -39,5 +39,5 @@ const sellAtivosUsuarios = async (
 
 module.exports = {
   pegarAtivosUsuarioPorCodCliente,
-  sellAtivosUsuarios,
+  venderAtivosUsuario,
 };
