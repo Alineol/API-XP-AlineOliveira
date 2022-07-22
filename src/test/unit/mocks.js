@@ -12,7 +12,7 @@ const arrayDeUmObjeto = [{
   changedRows: 1,
 }];
 
-const arrayDeObjetos = [[
+const arrayDeAtivosUsuario = [[
   {
     codCliente: 1, codAtivo: 2, qtdeAtivo: 10, valor: 10.90,
   },
@@ -25,5 +25,5 @@ const arrayDeObjetos = [[
 ]];
 
 module.exports = {
-  ativo, arrayVazio, arrayDeUmObjeto, arrayDeObjetos,
+  ativo, arrayVazio, arrayDeUmObjeto, arrayDeAtivosUsuario,
 };
