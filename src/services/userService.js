@@ -4,7 +4,7 @@ const jwt = require('../jwt');
 const checkAuthorization = async (token, cod) => {
   const tokenEmail = await jwt.conferirToken(token);
   const { email } = tokenEmail;
-  const [codCliente] = await userModel.getUserByEmail(email);
+  const [codCliente] = await userModel.pegarUsuarioPorEmail(email);
   return codCliente.codCliente === cod;
 };
 

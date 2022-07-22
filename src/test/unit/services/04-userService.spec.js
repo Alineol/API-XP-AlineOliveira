@@ -9,10 +9,10 @@ const jwt = require('../../../jwt/index');
 describe('Ao tentar conferir autorização do usuario(service):', () => {
   describe('- Se o token não corresponder ao codCliente', () => {
     before(() => {
-      sinon.stub(userModel, 'getUserByEmail').resolves([{ codCliente: 1 }]);
+      sinon.stub(userModel, 'pegarUsuarioPorEmail').resolves([{ codCliente: 1 }]);
     });
     after(() => {
-      userModel.getUserByEmail.restore();
+      userModel.pegarUsuarioPorEmail.restore();
     });
 
     it('retorna false', async () => {
@@ -22,10 +22,10 @@ describe('Ao tentar conferir autorização do usuario(service):', () => {
   });
   describe('- Se o token corresponder ao codCliente', () => {
     before(() => {
-      sinon.stub(userModel, 'getUserByEmail').resolves([{ codCliente: 1 }]);
+      sinon.stub(userModel, 'pegarUsuarioPorEmail').resolves([{ codCliente: 1 }]);
     });
     after(() => {
-      userModel.getUserByEmail.restore();
+      userModel.pegarUsuarioPorEmail.restore();
     });
 
     it('retorna false', async () => {

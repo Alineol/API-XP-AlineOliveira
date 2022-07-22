@@ -47,7 +47,7 @@ describe('Ao buscar um usuario pelo email', () => {
     });
 
     it('retorna um array vazio.', async () => {
-      const response = await usuarioModel.getUserByEmail('aline@gmail.com');
+      const response = await usuarioModel.pegarUsuarioPorEmail('aline@gmail.com');
       expect(response).to.be.an('array');
       expect(response).to.be.empty;
     });
@@ -61,7 +61,7 @@ describe('Ao buscar um usuario pelo email', () => {
     });
 
     it('retorna um objeto não vazio.', async () => {
-      const response = await usuarioModel.getUserByEmail('aline@gmail.com');
+      const response = await usuarioModel.pegarUsuarioPorEmail('aline@gmail.com');
       expect(response).to.be.an('object');
       expect(response).not.to.be.empty;
     });

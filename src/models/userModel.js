@@ -7,7 +7,7 @@ const login = async (email, senha) => {
   return user;
 };
 
-const getUserByEmail = async (email) => {
+const pegarUsuarioPorEmail = async (email) => {
   const q = 'SELECT codCliente FROM XPCorretora.Usuarios WHERE email = ?';
   const [user] = await connection.execute(q, [email]);
   return user;
@@ -15,5 +15,5 @@ const getUserByEmail = async (email) => {
 
 module.exports = {
   login,
-  getUserByEmail,
+  pegarUsuarioPorEmail,
 };
