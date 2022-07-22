@@ -4,7 +4,7 @@ const sinon = require('sinon');
 const { expect } = require('chai');
 const contaModel = require('../../../models/contaModel');
 const connection = require('../../../models/connection');
-const { arrayVazio, arrayDeUmObjeto } = require('./mocks');
+const { arrayVazio, arrayDeUmObjeto } = require('../mocks');
 
 describe('Ao pegar conta pelo codigo do cliente:', () => {
   describe('- Quando a conta  não existe:', () => {

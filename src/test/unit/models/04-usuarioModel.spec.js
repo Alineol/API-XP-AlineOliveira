@@ -4,7 +4,7 @@ const sinon = require('sinon');
 const { expect } = require('chai');
 const usuarioModel = require('../../../models/userModel');
 const connection = require('../../../models/connection');
-const { arrayVazio, arrayDeUmObjeto } = require('./mocks');
+const { arrayVazio, arrayDeUmObjeto } = require('../mocks');
 
 describe('Ao buscar um usuario pela senha e email', () => {
   describe('- Quando não encontra um usuario', () => {

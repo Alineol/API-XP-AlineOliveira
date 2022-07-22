@@ -4,9 +4,9 @@ const sinon = require('sinon');
 const { expect } = require('chai');
 const ativoModel = require('../../../models/ativoModel');
 const connection = require('../../../models/connection');
-const { ativo, arrayVazio, arrayDeUmObjeto } = require('./mocks');
+const { ativo, arrayVazio, arrayDeUmObjeto } = require('../mocks');
 
-describe('Ao pegar ativos da corretora por codAtivo:', () => {
+describe('Ao pegar ativos da corretora por codAtivo(model):', () => {
   describe('- Quando o ativo não existe:', () => {
     before(() => {
       sinon.stub(connection, 'execute').resolves(arrayVazio);
@@ -37,7 +37,7 @@ describe('Ao pegar ativos da corretora por codAtivo:', () => {
   });
 });
 
-describe('Ao tentar diminuir a quantidade de ativos:', () => {
+describe('Ao tentar diminuir a quantidade de ativos(model):', () => {
   describe('- Quando o ativo não existe:', () => {
     before(() => {
       sinon.stub(connection, 'execute').resolves(arrayVazio);

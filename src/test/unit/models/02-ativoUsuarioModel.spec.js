@@ -4,7 +4,7 @@ const sinon = require('sinon');
 const { expect } = require('chai');
 const ativoUsuarioModel = require('../../../models/ativoUsuarioModel');
 const connection = require('../../../models/connection');
-const { arrayVazio, arrayDeUmObjeto, arrayDeObjetos } = require('./mocks');
+const { arrayVazio, arrayDeUmObjeto, arrayDeObjetos } = require('../mocks');
 
 describe('Ao pegar ativos do usuario pelo codigo do cliente:', () => {
   describe('- Quando o cliente não existe:', () => {
