@@ -14,7 +14,7 @@ route.post(
 route.post(
   '/comprar',
   investimentosMiddleware.validateBodyInvestimentos,
-  ativoController.sellAtivoCorretora,
+  ativoController.venderAtivoCorretora,
 );
 
 module.exports = route;

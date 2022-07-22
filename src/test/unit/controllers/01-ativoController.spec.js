@@ -62,7 +62,7 @@ describe('Ao tentar realizar a venda de um ativo(controller):', () => {
     });
 
     it('retorna status 401 e um objeto no json.', async () => {
-      await ativoController.sellAtivoCorretora(req, res);
+      await ativoController.venderAtivoCorretora(req, res);
       expect(res.status.calledWith(401)).to.be.true;
       expect(res.json.calledWith(sinon.match.object)).to.be.equal(true);
     });
@@ -82,7 +82,7 @@ describe('Ao tentar realizar a venda de um ativo(controller):', () => {
     });
 
     it('retorna status 404 e um objeto no json.', async () => {
-      await ativoController.sellAtivoCorretora(req, res);
+      await ativoController.venderAtivoCorretora(req, res);
       expect(res.status.calledWith(404)).to.be.true;
       expect(res.json.calledWith(sinon.match.object)).to.be.equal(true);
     });
@@ -102,7 +102,7 @@ describe('Ao tentar realizar a venda de um ativo(controller):', () => {
     });
 
     it('retorna status 400 e um objeto no json.', async () => {
-      await ativoController.sellAtivoCorretora(req, res);
+      await ativoController.venderAtivoCorretora(req, res);
       expect(res.status.calledWith(400)).to.be.true;
       expect(res.json.calledWith(sinon.match.object)).to.be.equal(true);
     });
@@ -122,7 +122,7 @@ describe('Ao tentar realizar a venda de um ativo(controller):', () => {
     });
 
     it('retorna status 200 e um objeto no json.', async () => {
-      await ativoController.sellAtivoCorretora(req, res);
+      await ativoController.venderAtivoCorretora(req, res);
       expect(res.status.calledWith(200)).to.be.true;
       expect(res.json.calledWith(sinon.match.object)).to.be.equal(true);
     });

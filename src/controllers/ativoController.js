@@ -8,7 +8,7 @@ const pegaAtivosCorretoraPorCodAtivo = async (req, res) => {
   return res.status(200).json(ativo);
 };
 
-const sellAtivoCorretora = async (req, res) => {
+const venderAtivoCorretora = async (req, res) => {
   const { codCliente, codAtivo, qtdeAtivo } = req.body;
   const { authorization } = req.headers;
   const sell = await ativoService.sellAtivosCorretora(
@@ -22,5 +22,5 @@ const sellAtivoCorretora = async (req, res) => {
 };
 module.exports = {
   pegaAtivosCorretoraPorCodAtivo,
-  sellAtivoCorretora,
+  venderAtivoCorretora,
 };
