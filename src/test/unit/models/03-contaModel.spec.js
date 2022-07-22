@@ -47,7 +47,7 @@ describe('Ao tentar diminuir saldo do cliente', () => {
     });
 
     it('retorna um array vazio.', async () => {
-      const response = await contaModel.decrementAccount(1, 27.50);
+      const response = await contaModel.decrementarSaldo(1, 27.50);
       expect(response).to.be.an('array');
       expect(response).to.be.empty;
     });
@@ -61,7 +61,7 @@ describe('Ao tentar diminuir saldo do cliente', () => {
     });
 
     it('retorna um objeto não vazio', async () => {
-      const response = await contaModel.decrementAccount(1, 27.50);
+      const response = await contaModel.decrementarSaldo(1, 27.50);
       expect(response).to.be.an('object');
       expect(response).not.to.be.empty;
     });
@@ -78,7 +78,7 @@ describe('Ao tentar aumentar o saldo do cliente', () => {
     });
 
     it('retorna um array vazio.', async () => {
-      const response = await contaModel.increaseAccount(1, 27.50);
+      const response = await contaModel.incrementarSaldo(1, 27.50);
       expect(response).to.be.an('array');
       expect(response).to.be.empty;
     });
@@ -92,7 +92,7 @@ describe('Ao tentar aumentar o saldo do cliente', () => {
     });
 
     it('retorna um objeto não vazio', async () => {
-      const response = await contaModel.increaseAccount(1, 27.50);
+      const response = await contaModel.incrementarSaldo(1, 27.50);
       expect(response).to.be.an('object');
       expect(response).not.to.be.empty;
     });

@@ -17,7 +17,7 @@ const pegarContaPorCodCliente = async (codCliente, token) => {
 const sacarDaConta = async (codCliente, value, token) => {
   const authorization = await userService.checkAuthorization(token, codCliente);
   if (!authorization) return athorizationMessage;
-  return contaModel.decrementAccount(codCliente, value);
+  return contaModel.decrementarSaldo(codCliente, value);
   // Todo não permitir que o usuario tire mais do que ele tem
 };
 
@@ -25,7 +25,7 @@ const depositarNaConta = async (codCliente, value, token) => {
   const authorization = await userService.checkAuthorization(token, codCliente);
   if (!authorization) return athorizationMessage;
 
-  return contaModel.increaseAccount(codCliente, value);
+  return contaModel.incrementarSaldo(codCliente, value);
 };
 
 module.exports = {

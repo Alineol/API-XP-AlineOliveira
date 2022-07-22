@@ -61,11 +61,11 @@ describe('Ao tentar sacar da conta(service)', () => {
   describe('- Se conseguir efetuar a ação com sucesso', () => {
     before(() => {
       sinon.stub(userService, 'checkAuthorization').resolves(true);
-      sinon.stub(contaModel, 'decrementAccount').resolves('ok');
+      sinon.stub(contaModel, 'decrementarSaldo').resolves('ok');
     });
     after(() => {
       userService.checkAuthorization.restore();
-      contaModel.decrementAccount.restore();
+      contaModel.decrementarSaldo.restore();
     });
 
     it('retorna uma string com a frase "ok".', async () => {
@@ -92,11 +92,11 @@ describe('Ao tentar depositar um valor na conta(service)', () => {
   describe('- Se conseguir efetuar a ação com sucesso', () => {
     before(() => {
       sinon.stub(userService, 'checkAuthorization').resolves(true);
-      sinon.stub(contaModel, 'increaseAccount').resolves('ok');
+      sinon.stub(contaModel, 'incrementarSaldo').resolves('ok');
     });
     after(() => {
       userService.checkAuthorization.restore();
-      contaModel.increaseAccount.restore();
+      contaModel.incrementarSaldo.restore();
     });
 
     it('retorna uma string com a frase "ok".', async () => {

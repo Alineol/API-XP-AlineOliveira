@@ -8,14 +8,14 @@ const pegarContaPorCodCliente = async (codCliente) => {
   return Account;
 };
 
-const decrementAccount = async (codCliente, value) => {
+const decrementarSaldo = async (codCliente, value) => {
   const q = 'UPDATE XPCorretora.Contas SET valor = valor - ? WHERE codCliente = ?';
 
   const [transaction] = await connection.execute(q, [value, codCliente]);
   return transaction;
 };
 
-const increaseAccount = async (codCliente, value) => {
+const incrementarSaldo = async (codCliente, value) => {
   const q = 'UPDATE XPCorretora.Contas SET valor = valor + ? WHERE codCliente = ?';
 
   const [transaction] = await connection.execute(q, [value, codCliente]);
@@ -24,6 +24,6 @@ const increaseAccount = async (codCliente, value) => {
 
 module.exports = {
   pegarContaPorCodCliente,
-  decrementAccount,
-  increaseAccount,
+  decrementarSaldo,
+  incrementarSaldo,
 };
