@@ -23,7 +23,7 @@ const arrayDeAtivosUsuario = [[
     codCliente: 1, codAtivo: 3, qtdeAtivo: 50, valor: 11.90,
   },
   {
-    codCliente: 3, codAtivo: 4, qtdeAtivo: 1, valor: 2900.00,
+    codCliente: 1, codAtivo: 4, qtdeAtivo: 1, valor: 2900.00,
   },
 ]];
 
