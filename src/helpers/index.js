@@ -1,4 +1,4 @@
-function validateResponse(retono) {
+function validarResposta(retono) {
   switch (retono) {
     case 'Token invalido, sem autorização':
       return { code: 401, message: retono };
@@ -16,4 +16,4 @@ const checkAtivosQtdeToDecrement = (QtdeAtivos, QtdToRemove) => {
   return true;
 };
 
-module.exports = { validateResponse, checkAtivosQtdeToDecrement };
+module.exports = { validarResposta, checkAtivosQtdeToDecrement };

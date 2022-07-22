@@ -17,7 +17,7 @@ const venderAtivoCorretora = async (req, res) => {
     qtdeAtivo,
     authorization,
   );
-  const response = helpers.validateResponse(sell);
+  const response = helpers.validarResposta(sell);
   return res.status(response.code).json({ message: response.message });
 };
 module.exports = {
