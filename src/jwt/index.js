@@ -5,11 +5,11 @@ dotenv.config();
 
 const TokenSecret = process.env.JWT_SECRET;
 
-const generateToken = (email) => sign({ email }, TokenSecret, {
+const gerarToken = (email) => sign({ email }, TokenSecret, {
   expiresIn: '300m', algorithm: 'HS256',
 });
 
-const checkToken = async (token) => {
+const conferirToken = async (token) => {
   try {
     const validate = verify(token, TokenSecret);
     return validate;
@@ -17,4 +17,4 @@ const checkToken = async (token) => {
     return false;
   }
 };
-module.exports = { generateToken, checkToken };
+module.exports = { gerarToken, conferirToken };

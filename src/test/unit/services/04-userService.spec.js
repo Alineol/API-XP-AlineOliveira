@@ -52,11 +52,11 @@ describe('Ao tentar fazer login(service):', () => {
   describe('- Se inserir email e senha corretamente', () => {
     before(() => {
       sinon.stub(userModel, 'login').resolves([{ email: 'email@certo' }]);
-      sinon.stub(jwt, 'generateToken').resolves('tokenVálidoooo');
+      sinon.stub(jwt, 'gerarToken').resolves('tokenVálidoooo');
     });
     after(() => {
       userModel.login.restore();
-      jwt.generateToken.restore();
+      jwt.gerarToken.restore();
     });
 
     it('retorna o token gerado', async () => {
