@@ -36,7 +36,7 @@ const sellAtivosCorretora = async (
   const [ativoToSell] = await ativoModel.pegaAtivosCorretoraPorCodAtivo(codAtivo);
   if (!ativoToSell) return 'Ativo não encontrado';
 
-  const checkQtde = helpers.checkAtivosQtdeToDecrement(ativoToSell.qtdeAtivo, qtdeAtivo);
+  const checkQtde = helpers.conferirQtde(ativoToSell.qtdeAtivo, qtdeAtivo);
   if (checkQtde === false) return 'Quantidade de ativos excedida';
   // ! lógica para aumentar a quantidade de ativos do cliente após uma compra
   atualizarOuRegistrarAtivoUsuario({ codAtivo, qtdeAtivo, valor: ativoToSell.valor }, codCliente);

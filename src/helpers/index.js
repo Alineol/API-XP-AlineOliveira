@@ -9,11 +9,11 @@ function validarResposta(retono) {
     default: return { code: 200, message: 'Ação efetuada com sucesso!' };
   }
 }
-const checkAtivosQtdeToDecrement = (QtdeAtivos, QtdToRemove) => {
+const conferirQtde = (QtdeAtivos, QtdToRemove) => {
   if (QtdeAtivos < QtdToRemove) {
     return false;
   }
   return true;
 };
 
-module.exports = { validarResposta, checkAtivosQtdeToDecrement };
+module.exports = { validarResposta, conferirQtde };
