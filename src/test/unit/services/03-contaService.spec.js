@@ -5,7 +5,7 @@ const { expect } = require('chai');
 const contaModel = require('../../../models/contaModel');
 const userService = require('../../../services/userService');
 const contaService = require('../../../services/contaService');
-const { arrayDeConta } = require('../mocks');
+const { arrayDeConta } = require('../helpers');
 
 const codCliente = 1;
 const token = 'ddffafafgagfsagsagsatfgrgehsgsa4564789fsfagfg';

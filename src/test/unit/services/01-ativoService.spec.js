@@ -6,7 +6,7 @@ const ativoModel = require('../../../models/ativoModel');
 const ativoService = require('../../../services/ativoService');
 const userService = require('../../../services/userService');
 // const ativoUsuarioModel = require('../../../models/ativoUsuarioModel');
-const { ativo } = require('../mocks');
+const { ativo } = require('../helpers');
 
 describe('Ao pegar ativos da corretora por codAtivo(service):', () => {
   describe('- Quando o ativo não existe:', () => {

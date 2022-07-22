@@ -5,7 +5,7 @@ const { expect } = require('chai');
 const userService = require('../../../services/userService');
 const ativoUsuarioService = require('../../../services/ativoUsuarioService');
 const ativoUsuarioModel = require('../../../models/ativoUsuarioModel');
-const { arrayDeAtivosUsuario } = require('../mocks');
+const { arrayDeAtivosUsuario } = require('../helpers');
 
 const codCliente = 1;
 const token = 'ddffafafgagfsagsagsatfgrgehsgsa4564789fsfagfg';

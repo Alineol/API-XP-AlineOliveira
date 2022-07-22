@@ -4,7 +4,7 @@ const sinon = require('sinon');
 const { expect } = require('chai');
 const ativoModel = require('../../../models/ativoModel');
 const connection = require('../../../models/connection');
-const { ativo, arrayVazio, arrayDeUmObjeto } = require('../mocks');
+const { ativo, arrayVazio, arrayDeUmObjeto } = require('../helpers');
 
 describe('Ao pegar ativos da corretora por codAtivo(model):', () => {
   describe('- Quando o ativo não existe:', () => {
