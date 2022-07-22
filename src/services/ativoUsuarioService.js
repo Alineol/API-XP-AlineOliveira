@@ -31,7 +31,8 @@ const sellAtivosUsuarios = async (
   const checkQtde = helpers.checkAtivosQtdeToDecrement(ativoToSell.qtdeAtivo, qtdeAtivo);
   if (checkQtde === false) return 'Quantidade de ativos excedida';
 
-  return ativoUsuarioModel.decrementAtivosUsuarioQtde(codAtivo, codCliente, qtdeAtivo);
+  await ativoUsuarioModel.decrementAtivosUsuarioQtde(codAtivo, codCliente, qtdeAtivo);
+  return 'ok';
   // ! Iria apagar a quantidade total mas decidi só zerar para manter o registro -> relação se
   // encontra na função de pegar todos os os ativos de determinado usuario
 };
