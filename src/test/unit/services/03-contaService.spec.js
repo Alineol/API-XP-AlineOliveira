@@ -85,7 +85,7 @@ describe('Ao tentar depositar um valor na conta(service)', () => {
     });
 
     it('retorna uma string com a frase "Token invalido, sem autorização"', async () => {
-      const response = await contaService.putMoney(codCliente, valor, token);
+      const response = await contaService.depositarNaConta(codCliente, valor, token);
       expect(response).to.be.equal('Token invalido, sem autorização');
     });
   });
@@ -100,7 +100,7 @@ describe('Ao tentar depositar um valor na conta(service)', () => {
     });
 
     it('retorna uma string com a frase "ok".', async () => {
-      const response = await contaService.putMoney(codCliente, valor, token);
+      const response = await contaService.depositarNaConta(codCliente, valor, token);
       expect(response).to.be.equal('ok');
     });
   });

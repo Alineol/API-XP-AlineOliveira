@@ -96,13 +96,13 @@ describe('Ao tentar depositar dinheiro da conta(service):', () => {
       res.json = sinon.stub().returns();
       req.body = { codCliente: 1, valor: 200 };
       req.headers = { authorization: 'afdaffajffjfofj' };
-      sinon.stub(contaService, 'putMoney').resolves('Token invalido, sem autorização');
+      sinon.stub(contaService, 'depositarNaConta').resolves('Token invalido, sem autorização');
     });
     after(() => {
-      contaService.putMoney.restore();
+      contaService.depositarNaConta.restore();
     });
     it('retorna status 401 e um objeto no json.', async () => {
-      await contaController.putMoney(req, res);
+      await contaController.depositarNaConta(req, res);
       expect(res.status.calledWith(401)).to.be.true;
       expect(res.json.calledWith(sinon.match.object)).to.be.equal(true);
     });
@@ -115,13 +115,13 @@ describe('Ao tentar depositar dinheiro da conta(service):', () => {
       res.json = sinon.stub().returns();
       req.body = { codCliente: 1, valor: 200 };
       req.headers = { authorization: 'afdaffajffjfofj' };
-      sinon.stub(contaService, 'putMoney').resolves({});
+      sinon.stub(contaService, 'depositarNaConta').resolves({});
     });
     after(() => {
-      contaService.putMoney.restore();
+      contaService.depositarNaConta.restore();
     });
     it('retorna status 200 e um objeto no json.', async () => {
-      await contaController.putMoney(req, res);
+      await contaController.depositarNaConta(req, res);
       expect(res.status.calledWith(200)).to.be.true;
       expect(res.json.calledWith(sinon.match.object)).to.be.equal(true);
     });

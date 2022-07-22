@@ -18,7 +18,7 @@ route.post(
 route.post(
   '/conta/deposito',
   accountMid.validateBody,
-  contaController.putMoney,
+  contaController.depositarNaConta,
 );
 
 route.get(
