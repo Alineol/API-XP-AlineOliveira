@@ -1,5 +1,4 @@
 const { Router } = require('express');
-// const userController = require() '../controllers/userController';
 const contaController = require('../controllers/contaController');
 const accountMid = require('../middlewares/accounMiddlewares');
 const mid = require('../middlewares/ativoMiddleware');

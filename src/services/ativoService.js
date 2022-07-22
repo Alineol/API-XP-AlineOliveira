@@ -17,11 +17,12 @@ const pegaAtivosCorretoraPorCodAtivo = async (cod) => {
 
 const atualizarOuRegistrarAtivoUsuario = async (ativo, codCliente) => {
   const { codAtivo } = ativo;
-  ativoUsuarioModel.pegarAtivosUsuarioPorCodClienteAndCodAtivo(codAtivo, codCliente).then((result) => {
-    if (result.length === 0) {
-      ativoUsuarioModel.criarAtivoUsuario(ativo, codCliente);
-    } else { ativoUsuarioModel.incrementarQtdeAtivo(ativo, codCliente); }
-  });
+  ativoUsuarioModel.pegarAtivosUsuarioPorCodClienteAndCodAtivo(codAtivo, codCliente)
+    .then((result) => {
+      if (result.length === 0) {
+        ativoUsuarioModel.criarAtivoUsuario(ativo, codCliente);
+      } else { ativoUsuarioModel.incrementarQtdeAtivo(ativo, codCliente); }
+    });
 };
 
 const sellAtivosCorretora = async (
