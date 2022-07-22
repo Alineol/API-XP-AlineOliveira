@@ -18,7 +18,7 @@ const pegarAtivosUsuarioPorCodClienteAndCodAtivo = async (
   return ativos;
 };
 
-const createAtivoUsuario = async (ativo, codCliente) => {
+const criarAtivoUsuario = async (ativo, codCliente) => {
   const { codAtivo, valor, qtdeAtivo } = ativo;
   const query = `INSERT INTO ${bd} (codAtivo, qtdeAtivo, valor, codCliente) VALUES (?, ?, ?, ?);`;
   const [insert] = await connection.execute(query, [
@@ -26,14 +26,14 @@ const createAtivoUsuario = async (ativo, codCliente) => {
   return insert;
 };
 
-const incrementQtdeAtivo = async (ativo, codCliente) => {
+const incrementarQtdeAtivo = async (ativo, codCliente) => {
   const { codAtivo, qtdeAtivo } = ativo;
   const q = `UPDATE ${bd} SET qtdeAtivo = qtdeAtivo + ? WHERE codCliente = ? AND codAtivo = ?;`;
   const [update] = await connection.execute(q, [qtdeAtivo, codCliente, codAtivo]);
   return update;
 };
 
-const decrementAtivosUsuarioQtde = async (
+const decrementarAtivosUsuarioQtde = async (
   codAtivo,
   codCliente,
   qtdeAtivo,
@@ -46,7 +46,7 @@ const decrementAtivosUsuarioQtde = async (
 module.exports = {
   pegarAtivosUsuarioPorCodCliente,
   pegarAtivosUsuarioPorCodClienteAndCodAtivo,
-  decrementAtivosUsuarioQtde,
-  createAtivoUsuario,
-  incrementQtdeAtivo,
+  decrementarAtivosUsuarioQtde,
+  criarAtivoUsuario,
+  incrementarQtdeAtivo,
 };
