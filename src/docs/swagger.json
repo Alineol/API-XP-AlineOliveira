@@ -3,7 +3,7 @@
     "openapi": "3.0.0",
     "info": {
       "title": "Express api com Swagger",
-      "description": "Api utilizando express documentada pelo Swagger",
+      "description": "Api utilizando express documentada pelo Swagger. Os retornos da api estão padronizados da seguinte maneira: toda as respostas de get concluídas com sucesso retornarão um array caso seja do tipo getAll ou um objeto caso seja do tipo getOne. Todas as respostas de erro retornarão o status code e um objeto contendo uma propriedade message  e a explicação do erro. O TOKEN é necessário em todas as rotas exceto a de login",
       "version": "1.0",
       "contact": {
         "email": "allinne.oliveira.ol@gmail.com"
