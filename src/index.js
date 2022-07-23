@@ -2,7 +2,7 @@ require('dotenv').config();
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 const app = require('./app');
-const swaggerConfig = require('./docs/swagger.config');
+const swaggerConfig = require('./docs/swagger.config.json');
 
 const { PORT } = process.env;
 
