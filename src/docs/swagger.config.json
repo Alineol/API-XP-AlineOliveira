@@ -1,0 +1,173 @@
+{
+  "definition": {
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Express api com Swagger",
+      "description": "Api utilizando express documentada pelo Swagger",
+      "termsOfService":"Não tem",
+      "version": "1.0",
+      "contact": {
+        "email": "allinne.oliveira.ol@gmail.com"
+      },
+      "servers": [
+        {
+          "url": "http: //localhost:3000",
+          "description": "api de teste"
+        }
+      ]
+    },
+    "components": {
+      "schemas": {
+        "login": {
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string"
+            },
+            "senha": {
+              "type": "string"
+            }
+          },
+          "example": {
+            "email": "aline@gmail.com",
+            "senha": "12345678"
+          }
+        },
+        "error": {
+          "type": "object",
+          "properties": {
+            "message": {
+              "type": "string"
+            }
+          },
+          "example": {
+            "message": "motivo do erro"
+          }
+        },
+        "conta": {
+          "type": "object",
+          "properties": {
+            "codCliente": {
+              "type": "integer"
+            },
+            "valor": {
+              "type": "integer"
+            }
+          },
+          "example": {
+            "codCliente": 1,
+            "valor": 2500.00
+          }
+        },
+        "securitySchemes": {
+          "bearerAuth": {
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT"
+          }
+        }
+      }
+    },
+    "paths": {
+      "/login": {
+        "post": {
+          "summary": "Rota para fazer login de usuario",
+          "description": "Para fazer login é necessário que o requestBody esteja completo e com os dados corretos, caso contrário a api retornará uma mensagem de erro",
+          "tags": [
+            "login"
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/login"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "login realizado com sucesso",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "token": {
+                        "type": "string"
+                      }
+                    },
+                    "example": {
+                      "token": "dnakjdhuiafhfjflkajfofoufg"
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/error"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/error"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/cliente/conta:codCliente": {
+        "get": {
+          "summary": "Rota para pegar a conta pelo id do cliente",
+          "description": "Para conseguir acessar essa rota, é necessário que haja um token e que esse token seja correspondente ao id(codCliente) do usuario, caso contrário a rota retornará um erro.",
+          "tags": [
+            "conta"
+          ],
+          "security": [{"bearerAuth": []}],
+          "parameters": [
+            {
+              "name": "CodCliente",
+              "in": "paths",
+              "description": "id do cliente",
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Objeto contendo codCliente e o saldo da conta",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/conta"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json":{
+                  "schema":{
+                    "$ref":"#/components/schemas/error"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "apis": ["./src/routes/index.js"]
+}
