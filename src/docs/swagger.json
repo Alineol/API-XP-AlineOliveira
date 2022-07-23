@@ -13,7 +13,7 @@
       "/login": {
         "post": {
           "summary": "Rota para fazer login de usuario",
-          "description": "Para fazer login é necessário que o reqBody esteja completo.",
+          "description": "Para fazer login é necessário que o reqBody esteja completo e que o usuario exista",
           "tags": ["login"],
           "requestBody": {
             "content": {
@@ -106,7 +106,7 @@
           }
         }
       },
-      "cliente/conta/saque":{
+      "/cliente/conta/saque":{
         "post":{
           "summary": "Rota para sacar da conta do usuario",
           "description": "Para que a ação seja realizada com sucesso é necessario que o o id do reBody seja correspondente ao token",
@@ -165,7 +165,7 @@
           }
         }
       },
-      "cliente/conta/deposito":{
+      "/cliente/conta/deposito":{
         "post":{
           "summary": "Rota para depositar na conta do usuario",
           "description": "Para que a ação seja realizada com sucesso é necessario que o o id do reBody seja correspondente ao token",
@@ -224,7 +224,7 @@
           }
         }
       },
-      "cliente/ativos/{codCliente}":{
+      "/cliente/ativos/{codCliente}":{
         "get":{
           "summary": "Rota para pegar ativos pelo codCliente",
           "description": "Para conseguir acessar essa rota, é necessário que haja um token e que esse token seja correspondente ao id(codCliente) do usuario, caso contrário a rota retornará um erro.",
@@ -285,7 +285,7 @@
           }
         }
       },
-      "ativos/":{
+      "/ativos/":{
         "get":{
           "summary": "Rota para pegar todos os ativos do BD",
           "description": "Para conseguir acessar essa rota, é necessário que o usuario esteja logado",
@@ -339,7 +339,7 @@
 
         }
       },
-      "ativos/{codAtivo}":{
+      "/ativos/{codAtivo}":{
         "get":{
           "summary": "Rota para pega o ativo pelo codAtivo",
           "description": "Para conseguir acessar essa rota, é necessário que o usuario esteja logado",
@@ -398,7 +398,7 @@
 
         }
       },
-      "investimentos/vender":{
+      "/investimentos/vender":{
         "post":{
           "summary": "Rota para o usuario vender seus investimentos",
           "description": "Para que a ação seja realizada com sucesso é necessario que o o id do reqBody seja correspondente ao token.",
@@ -457,7 +457,7 @@
           }
         }
       },
-      "investimentos/comprar":{
+      "/investimentos/comprar":{
         "post":{
           "summary": "Rota para o usuario compar investimentos da corretora",
           "description": "Para que a ação seja realizada com sucesso é necessario que o o id do reqBody seja correspondente ao token.",
