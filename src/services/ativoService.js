@@ -2,16 +2,19 @@ const ativoModel = require('../models/ativoModel');
 const userService = require('./userService');
 const helpers = require('../helpers');
 const ativoUsuarioModel = require('../models/ativoUsuarioModel');
+const jwt = require('../jwt/index');
 
-const pegaAtivosCorretoraPorCodAtivo = async (cod) => {
-  const [ativo] = await ativoModel.pegaAtivosCorretoraPorCodAtivo(cod);
-  if (!ativo) {
+const pegaAtivosCorretoraPorCodAtivo = async (cod, token) => {
+  const authorization = await jwt.conferirToken(token);
+  if (!authorization) return 'Token invalido, sem autorização';
+  const ativo = await ativoModel.pegaAtivosCorretoraPorCodAtivo(cod);
+  if (ativo.length === 0) {
     return 'Ativo não encontrado';
   }
   return {
-    codAtivo: ativo.codAtivo,
-    qtdeAtivo: ativo.qtdeAtivo,
-    valor: Number(ativo.valor),
+    codAtivo: ativo[0].codAtivo,
+    qtdeAtivo: ativo[0].qtdeAtivo,
+    valor: Number(ativo[0].valor),
   };
 };
 
@@ -45,8 +48,19 @@ const sellAtivosCorretora = async (
   return 'ok';
 };
 
+const pegarTodosOsAtivosCorretora = async (token) => {
+  const authorization = await jwt.conferirToken(token);
+  if (!authorization) return 'Token invalido, sem autorização';
+  const ativos = await ativoModel.pegarTodosOsAtivosCorretora();
+  if (ativos.length === 0) {
+    return 'Não há ativos disponíveis';
+  }
+  return ativos;
+};
+
 module.exports = {
   pegaAtivosCorretoraPorCodAtivo,
   sellAtivosCorretora,
   atualizarOuRegistrarAtivoUsuario,
+  pegarTodosOsAtivosCorretora,
 };
