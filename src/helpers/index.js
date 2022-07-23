@@ -16,4 +16,17 @@ const conferirQtde = (QtdeAtivos, QtdToRemove) => {
   return true;
 };
 
-module.exports = { validarResposta, conferirQtde };
+const conferirRespostaComRetorno = (resposta) => {
+  switch (resposta) {
+    case 'Token invalido, sem autorização':
+      return { code: 401, message: resposta };
+    case 'Não há ativos disponíveis':
+      return { code: 404, message: resposta };
+    case 'Ativo não encontrado':
+      return { code: 404, message: resposta };
+    default:
+      return resposta;
+  }
+};
+
+module.exports = { validarResposta, conferirQtde, conferirRespostaComRetorno };
