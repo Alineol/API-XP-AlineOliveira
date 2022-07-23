@@ -10,7 +10,8 @@ const swaggerConfig = {
     paths: {
       '/login': {
         post: {
-          sumanry: 'Api para fazer login de usuario',
+          summary: 'Rota para fazer login de usuario',
+          description: 'Para fazer login é necessário que o requestBody esteja completo e com os dados corretos, caso contrário a api retornará uma mensagem de erro',
           tags: ['login'],
           requestBody: {
             content: {
@@ -40,6 +41,26 @@ const swaggerConfig = {
                 },
               },
             },
+            400: {
+              description: 'Bad Request',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/error',
+                  },
+                },
+              },
+            },
+            401: {
+              description: 'Unauthorized',
+              content: {
+                'application/json': {
+                  schema: {
+                    $ref: '#/components/schemas/error',
+                  },
+                },
+              },
+            },
           },
         },
       },
@@ -59,6 +80,17 @@ const swaggerConfig = {
           example: {
             email: 'aline@gmail.com',
             senha: '12345678',
+          },
+        },
+        error: {
+          type: 'object',
+          properties: {
+            message: {
+              type: 'string',
+            },
+          },
+          example: {
+            message: 'motivo do erro',
           },
         },
       },
