@@ -13,7 +13,7 @@
       "/login": {
         "post": {
           "summary": "Rota para fazer login de usuario",
-          "description": "Para fazer login é necessário que o requestBody esteja completo e com os dados corretos, caso contrário a api retornará uma mensagem de erro",
+          "description": "Para fazer login é necessário que o reqBody esteja completo.",
           "tags": ["login"],
           "requestBody": {
             "content": {
@@ -419,7 +419,7 @@
               "content": {
                 "application/json":{
                   "example": {
-                    "message": "Ação efetuado com sucesso!"
+                    "message": "Ação efetuada com sucesso!"
                   }
                 }
               }
@@ -457,9 +457,9 @@
           }
         }
       },
-      "investimentos/vender":{
+      "investimentos/comprar":{
         "post":{
-          "summary": "Rota para o usuario vender seus investimentos",
+          "summary": "Rota para o usuario compar investimentos da corretora",
           "description": "Para que a ação seja realizada com sucesso é necessario que o o id do reqBody seja correspondente ao token.",
           "tags": ["investimentos"],
           "security": [{"bearerAuth": []}],
@@ -478,7 +478,7 @@
               "content": {
                 "application/json":{
                   "example": {
-                    "message": "Ação efetuado com sucesso!"
+                    "message": "Ação efetuada com sucesso!"
                   }
                 }
               }
