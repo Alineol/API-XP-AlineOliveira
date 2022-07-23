@@ -15,7 +15,7 @@ const decrementarAtivosCorretotaQtde = async (codAtivo, qtdeAtivo) => {
 };
 
 const pegarTodosOsAtivosCorretora = async () => {
-  const [ativos] = await connection.execute('SELECT * FROM XPCorretora.AtivosCorretora;');
+  const [ativos] = await connection.execute('SELECT * FROM XPCorretora.AtivosCorretora WHERE qtdeAtivo > 0;');
   return ativos;
 };
 
