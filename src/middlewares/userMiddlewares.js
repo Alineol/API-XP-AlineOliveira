@@ -16,7 +16,7 @@ const validateLoginBody = (req, res, next) => {
 };
 
 const validatetoken = async (req, res, next) => {
-  if (!req.headers.authorization) return res.status(401).json({ message: 'Token não encontrado' });
+  if (!req.headers.authorization) return res.status(404).json({ message: 'Token não encontrado' });
   const validate = await jwt.conferirToken(req.headers.authorization);
   if (!validate) return res.status(401).json({ message: 'Token inválido ou expirado' });
   next();
