@@ -4,8 +4,8 @@ const jwt = require('../jwt');
 
 const validateLoginBody = (req, res, next) => {
   const schema = joi.object({
-    email: joi.string().required().min(3),
-    senha: joi.string().required().min(7),
+    email: joi.string().required().min(5),
+    senha: joi.string().required().min(6).max(8),
   });
   const { error } = schema.validate(req.body, { messages });
   if (error) {
