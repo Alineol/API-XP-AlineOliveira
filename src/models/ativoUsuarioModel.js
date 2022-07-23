@@ -3,8 +3,7 @@ const connection = require('./connection');
 const bd = 'XPCorretora.AtivosUsuarios';
 
 const pegarAtivosUsuarioPorCodCliente = async (codCliente) => {
-  // TODO mudar essa query depois
-  const query = 'SELECT * FROM XPCorretora.AtivosUsuarios WHERE codCliente = ?;';
+  const query = 'SELECT * FROM XPCorretora.AtivosUsuarios WHERE codCliente = ? AND qtdeAtivo > 0;';
   const [ativos] = await connection.execute(query, [codCliente]);
   return ativos;
 };
