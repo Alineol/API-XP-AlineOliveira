@@ -70,7 +70,7 @@ describe('Ao tentar diminuir a quantidade de ativos(model):', () => {
   });
 });
 
-describe('Ao tentar pegar todos os ativos disponíveis no BD', () => {
+describe('Ao tentar pegar todos os ativos disponíveis no BD(model)', () => {
   describe('-Se não houver ativos no BD', () => {
     before(() => {
       sinon.stub(connection, 'execute').resolves(arrayVazio);
