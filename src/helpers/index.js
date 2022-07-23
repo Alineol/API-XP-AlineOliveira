@@ -1,4 +1,4 @@
-function validateResponse(retono) {
+function validarResposta(retono) {
   switch (retono) {
     case 'Token invalido, sem autorização':
       return { code: 401, message: retono };
@@ -9,11 +9,24 @@ function validateResponse(retono) {
     default: return { code: 200, message: 'Ação efetuada com sucesso!' };
   }
 }
-const checkAtivosQtdeToDecrement = (QtdeAtivos, QtdToRemove) => {
+const conferirQtde = (QtdeAtivos, QtdToRemove) => {
   if (QtdeAtivos < QtdToRemove) {
     return false;
   }
   return true;
 };
 
-module.exports = { validateResponse, checkAtivosQtdeToDecrement };
+const conferirRespostaComRetorno = (resposta) => {
+  switch (resposta) {
+    case 'Token invalido, sem autorização':
+      return { code: 401, message: resposta };
+    case 'Não há ativos disponíveis':
+      return { code: 404, message: resposta };
+    case 'Ativo não encontrado':
+      return { code: 404, message: resposta };
+    default:
+      return resposta;
+  }
+};
+
+module.exports = { validarResposta, conferirQtde, conferirRespostaComRetorno };

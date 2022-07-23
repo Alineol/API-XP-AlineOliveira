@@ -3,33 +3,33 @@ const userService = require('./userService');
 
 const athorizationMessage = 'Token invalido, sem autorização';
 
-const getByCodCliente = async (codCliente, token) => {
+const pegarContaPorCodCliente = async (codCliente, token) => {
   const authorization = await userService.checkAuthorization(token, codCliente);
   if (!authorization) return athorizationMessage;
 
-  const [account] = await contaModel.getByCodCliente(codCliente);
+  const [account] = await contaModel.pegarContaPorCodCliente(codCliente);
   return {
     codCliente: account.codCliente,
     valor: Number(account.valor),
   };
 };
 
-const getMoney = async (codCliente, value, token) => {
+const sacarDaConta = async (codCliente, value, token) => {
   const authorization = await userService.checkAuthorization(token, codCliente);
   if (!authorization) return athorizationMessage;
-
-  return contaModel.decrementAccount(codCliente, value);
+  return contaModel.decrementarSaldo(codCliente, value);
+  // Todo não permitir que o usuario tire mais do que ele tem
 };
 
-const putMoney = async (codCliente, value, token) => {
+const depositarNaConta = async (codCliente, value, token) => {
   const authorization = await userService.checkAuthorization(token, codCliente);
   if (!authorization) return athorizationMessage;
 
-  return contaModel.increaseAccount(codCliente, value);
+  return contaModel.incrementarSaldo(codCliente, value);
 };
 
 module.exports = {
-  getByCodCliente,
-  getMoney,
-  putMoney,
+  pegarContaPorCodCliente,
+  sacarDaConta,
+  depositarNaConta,
 };

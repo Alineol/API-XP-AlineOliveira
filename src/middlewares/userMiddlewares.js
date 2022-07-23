@@ -4,8 +4,8 @@ const jwt = require('../jwt');
 
 const validateLoginBody = (req, res, next) => {
   const schema = joi.object({
-    email: joi.string().required().min(3),
-    senha: joi.string().required().min(7),
+    email: joi.string().required().min(5),
+    senha: joi.string().required().min(6).max(8),
   });
   const { error } = schema.validate(req.body, { messages });
   if (error) {
@@ -16,8 +16,8 @@ const validateLoginBody = (req, res, next) => {
 };
 
 const validatetoken = async (req, res, next) => {
-  if (!req.headers.authorization) return res.status(401).json({ message: 'Token não encontrado' });
-  const validate = await jwt.checkToken(req.headers.authorization);
+  if (!req.headers.authorization) return res.status(404).json({ message: 'Token não encontrado' });
+  const validate = await jwt.conferirToken(req.headers.authorization);
   if (!validate) return res.status(401).json({ message: 'Token inválido ou expirado' });
   next();
 };

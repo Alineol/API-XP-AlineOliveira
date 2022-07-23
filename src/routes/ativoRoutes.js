@@ -7,7 +7,9 @@ const route = Router();
 route.get(
   '/:codAtivo',
   mid.validateAtivosCorretoraParams,
-  ativoController.pegaAtivosCorretoraporCodAtivo,
+  ativoController.pegaAtivosCorretoraPorCodAtivo,
 );
+
+route.get('/', ativoController.pegarTodosOsAtivosCorretora);
 
 module.exports = route;

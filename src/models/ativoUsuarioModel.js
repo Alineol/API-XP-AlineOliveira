@@ -2,14 +2,13 @@ const connection = require('./connection');
 
 const bd = 'XPCorretora.AtivosUsuarios';
 
-const getAtivosUsuarioByCodCliente = async (codCliente) => {
-  // TODO mudar essa query depois
-  const query = 'SELECT * FROM XPCorretora.AtivosUsuarios WHERE codCliente = ?;';
+const pegarAtivosUsuarioPorCodCliente = async (codCliente) => {
+  const query = 'SELECT * FROM XPCorretora.AtivosUsuarios WHERE codCliente = ? AND qtdeAtivo > 0;';
   const [ativos] = await connection.execute(query, [codCliente]);
   return ativos;
 };
 
-const getAtivosUsuarioByCodClienteAndCodAtivo = async (
+const pegarAtivosUsuarioPorCodClienteAndCodAtivo = async (
   codAtivo,
   codCliente,
 ) => {
@@ -18,7 +17,7 @@ const getAtivosUsuarioByCodClienteAndCodAtivo = async (
   return ativos;
 };
 
-const createAtivoUsuario = async (ativo, codCliente) => {
+const criarAtivoUsuario = async (ativo, codCliente) => {
   const { codAtivo, valor, qtdeAtivo } = ativo;
   const query = `INSERT INTO ${bd} (codAtivo, qtdeAtivo, valor, codCliente) VALUES (?, ?, ?, ?);`;
   const [insert] = await connection.execute(query, [
@@ -26,15 +25,14 @@ const createAtivoUsuario = async (ativo, codCliente) => {
   return insert;
 };
 
-const incrementQtdeAtivo = async (ativo, codCliente) => {
+const incrementarQtdeAtivo = async (ativo, codCliente) => {
   const { codAtivo, qtdeAtivo } = ativo;
-  console.log(qtdeAtivo);
   const q = `UPDATE ${bd} SET qtdeAtivo = qtdeAtivo + ? WHERE codCliente = ? AND codAtivo = ?;`;
   const [update] = await connection.execute(q, [qtdeAtivo, codCliente, codAtivo]);
   return update;
 };
 
-const decrementAtivosUsuarioQtde = async (
+const decrementarAtivosUsuarioQtde = async (
   codAtivo,
   codCliente,
   qtdeAtivo,
@@ -45,9 +43,9 @@ const decrementAtivosUsuarioQtde = async (
 };
 
 module.exports = {
-  getAtivosUsuarioByCodCliente,
-  getAtivosUsuarioByCodClienteAndCodAtivo,
-  decrementAtivosUsuarioQtde,
-  createAtivoUsuario,
-  incrementQtdeAtivo,
+  pegarAtivosUsuarioPorCodCliente,
+  pegarAtivosUsuarioPorCodClienteAndCodAtivo,
+  decrementarAtivosUsuarioQtde,
+  criarAtivoUsuario,
+  incrementarQtdeAtivo,
 };

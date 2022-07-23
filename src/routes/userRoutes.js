@@ -1,5 +1,4 @@
 const { Router } = require('express');
-// const userController = require() '../controllers/userController';
 const contaController = require('../controllers/contaController');
 const accountMid = require('../middlewares/accounMiddlewares');
 const mid = require('../middlewares/ativoMiddleware');
@@ -7,23 +6,23 @@ const ativoUsuarioController = require('../controllers/ativoUsuarioController');
 
 const route = Router();
 
-route.get('/conta/:codCliente', contaController.getByCodCliente);
+route.get('/conta/:codCliente', contaController.pegarContaPorCodCliente);
 
 route.post(
   '/conta/saque',
   accountMid.validateBody,
-  contaController.getMoney,
+  contaController.sacarDaConta,
 );
 
 route.post(
   '/conta/deposito',
   accountMid.validateBody,
-  contaController.putMoney,
+  contaController.depositarNaConta,
 );
 
 route.get(
   '/ativos/:codCliente',
   mid.validateAtivosClienteParams,
-  ativoUsuarioController.getAtivosUsuarioByCodCliente,
+  ativoUsuarioController.pegarAtivosUsuarioPorCodCliente,
 );
 module.exports = route;

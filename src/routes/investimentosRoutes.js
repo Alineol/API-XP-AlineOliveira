@@ -8,13 +8,13 @@ const route = Router();
 route.post(
   '/vender',
   investimentosMiddleware.validateBodyInvestimentos,
-  ativoUsuarioController.sellAtivosUsuarios,
+  ativoUsuarioController.venderAtivosUsuario,
 );
 
 route.post(
   '/comprar',
   investimentosMiddleware.validateBodyInvestimentos,
-  ativoController.sellAtivoCorretora,
+  ativoController.venderAtivoCorretora,
 );
 
 module.exports = route;

@@ -1,14 +1,18 @@
 const helpers = require('../helpers');
 const ativoService = require('../services/ativoService');
 
-const pegaAtivosCorretoraporCodAtivo = async (req, res) => {
+const pegaAtivosCorretoraPorCodAtivo = async (req, res) => {
   const { codAtivo } = req.params;
-  const ativo = await ativoService.pegaAtivosCorretoraporCodAtivo((codAtivo));
-  if (ativo === 'Ativo não encontrado') return res.status(404).json({ message: ativo });
-  return res.status(200).json(ativo);
+  const { authorization } = req.headers;
+  const ativos = await ativoService.pegaAtivosCorretoraPorCodAtivo(codAtivo, authorization);
+  const resultado = helpers.conferirRespostaComRetorno(ativos);
+  if (resultado.message) {
+    return res.status(resultado.code).json({ message: resultado.message });
+  }
+  return res.status(200).json(resultado);
 };
 
-const sellAtivoCorretora = async (req, res) => {
+const venderAtivoCorretora = async (req, res) => {
   const { codCliente, codAtivo, qtdeAtivo } = req.body;
   const { authorization } = req.headers;
   const sell = await ativoService.sellAtivosCorretora(
@@ -17,10 +21,21 @@ const sellAtivoCorretora = async (req, res) => {
     qtdeAtivo,
     authorization,
   );
-  const response = helpers.validateResponse(sell);
+  const response = helpers.validarResposta(sell);
   return res.status(response.code).json({ message: response.message });
 };
+
+const pegarTodosOsAtivosCorretora = async (req, res) => {
+  const { authorization } = req.headers;
+  const ativo = await ativoService.pegarTodosOsAtivosCorretora(authorization);
+  const resultado = helpers.conferirRespostaComRetorno(ativo);
+  if (resultado.message) {
+    return res.status(resultado.code).json({ message: resultado.message });
+  }
+  return res.status(200).json(resultado);
+};
 module.exports = {
-  pegaAtivosCorretoraporCodAtivo,
-  sellAtivoCorretora,
+  pegaAtivosCorretoraPorCodAtivo,
+  venderAtivoCorretora,
+  pegarTodosOsAtivosCorretora,
 };

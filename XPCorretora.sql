@@ -3,8 +3,8 @@ CREATE SCHEMA IF NOT EXISTS XPCorretora;
 
 CREATE TABLE XPCorretora.Usuarios (
   codCliente INTEGER AUTO_INCREMENT PRIMARY KEY NOT NULL,
-  email VARCHAR(50) NOT NULL,
-  senha VARCHAR(50) NOT NULL
+  email VARCHAR(50) NOT NULL UNIQUE,
+  senha VARCHAR(8) NOT NULL
 );
 
 CREATE TABLE XPCorretora.AtivosCorretora (
@@ -32,10 +32,10 @@ CREATE TABLE XPCorretora.Contas(
 
 INSERT INTO XPCorretora.Usuarios (email, senha)
 VALUES
-('aline@gmail.com', '123@123'),
-('marcia@gmail.com', 'lala@123'),
-('vanessa@gmail.com', '123321'),
-('juliane@gmail.com', 'juju@123');
+('aline@gmail.com', '12345678'),
+('marcia@gmail.com', '12345678'),
+('vanessa@gmail.com', '12345678'),
+('juliane@gmail.com', '12345678');
 
 INSERT INTO XPCorretora.AtivosCorretora(qtdeAtivo, valor)
 VALUES
