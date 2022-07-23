@@ -105,6 +105,185 @@
             }
           }
         }
+      },
+      "cliente/conta/saque":{
+        "post":{
+          "summary": "Rota para sacar da conta do usuario",
+          "description": "Para que a ação seja realizada com sucesso é necessario que o o id do reBody seja correspondente ao token",
+          "tags": ["conta"],
+          "security": [{"bearerAuth": []}],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/conta"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "uma mensagem dizendo que foi bem sucessido",
+              "content": {
+                "application/json":{
+                  "example": {
+                    "message": "Saque efetuado com sucesso!"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json":{
+                  "schema":{
+                    "$ref":"#/components/schemas/error"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/error"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/error"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "cliente/conta/deposito":{
+        "post":{
+          "summary": "Rota para depositar na conta do usuario",
+          "description": "Para que a ação seja realizada com sucesso é necessario que o o id do reBody seja correspondente ao token",
+          "tags": ["conta"],
+          "security": [{"bearerAuth": []}],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/conta"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "uma mensagem dizendo que foi bem sucessido",
+              "content": {
+                "application/json":{
+                  "example": {
+                    "message": "Depósito efetuado com sucesso!"
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json":{
+                  "schema":{
+                    "$ref":"#/components/schemas/error"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/error"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/error"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "cliente/ativos/{codCliente}":{
+        "get":{
+          "summary": "Rota para pegar ativos pelo codCliente",
+          "description": "Para conseguir acessar essa rota, é necessário que haja um token e que esse token seja correspondente ao id(codCliente) do usuario, caso contrário a rota retornará um erro.",
+          "tags":["ativos"],
+          "security": [{"bearerAuth": []}],
+          "parameters": [
+            {
+              "name": "codCliente",
+              "in": "path",
+              "description": "id do cliente",
+              "required": true
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Objeto contendo codCliente e o saldo da conta",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items":{
+                      "$ref": "#/components/schemas/ativoUsuario"
+                    }
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json":{
+                  "schema":{
+                    "$ref":"#/components/schemas/error"
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad Request",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/error"
+                  }
+                }
+              }
+            },
+            "404": {
+              "description": "Not found",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/error"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "components": {
@@ -147,8 +326,50 @@
           },
           "example": {
             "codCliente": 1,
-            "valor": 2500.00
+            "valor": 10.00
           }
+        },
+        "ativoUsuario":{
+          "type": "object",
+            "properties": {
+              "codCliente": {
+                "type": "integer"
+              },
+              "valor": {
+                "type": "integer"
+              },
+              "codAtivo":{
+                "type":"integer"
+              },
+              "qtdeAtivo": {
+                "type":"integer"
+              }
+            },
+          "example": {
+            "codCliente": 1,
+            "valor": 10.00,
+            "codAtivo": 2,
+            "qtdeAtivo":10
+          }
+        },
+        "ativo":{
+          "type": "object",
+          "properties": {
+            "valor": {
+              "type": "integer"
+            },
+            "codAtivo":{
+              "type":"integer"
+            },
+            "qtdeAtivo": {
+              "type":"integer"
+            }
+          },
+        "example": {
+          "valor": 10.00,
+          "codAtivo": 2,
+          "qtdeAtivo":10
+        }
         }
       },
       "securitySchemes": {
