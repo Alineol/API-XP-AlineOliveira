@@ -10,4 +10,6 @@ route.get(
   ativoController.pegaAtivosCorretoraPorCodAtivo,
 );
 
+route.get('/', ativoController.pegarTodosOsAtivosCorretora);
+
 module.exports = route;
