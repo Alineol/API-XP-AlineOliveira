@@ -1,4 +1,5 @@
 const contaService = require('../services/contaService');
+const { validarResposta } = require('../helpers/index');
 
 const invalidTokenMessage = 'Token invalido, sem autorização';
 
@@ -14,18 +15,18 @@ const sacarDaConta = async (req, res) => {
   const { authorization } = req.headers;
   const { codCliente, valor } = req.body;
   const transaction = await contaService.sacarDaConta(codCliente, valor, authorization);
-  if (transaction === invalidTokenMessage) return res.status(401).json({ message: transaction });
+  const resposta = validarResposta(transaction);
 
-  return res.status(200).json({ message: 'Saque efetuado com sucesso!' });
+  return res.status(resposta.code).json({ message: resposta.message });
 };
 
 const depositarNaConta = async (req, res) => {
   const { authorization } = req.headers;
   const { codCliente, valor } = req.body;
   const transaction = await contaService.depositarNaConta(codCliente, valor, authorization);
-  if (transaction === invalidTokenMessage) return res.status(401).json({ message: transaction });
+  const resposta = validarResposta(transaction);
 
-  return res.status(200).json({ message: 'Depósito efetuado com sucesso!' });
+  return res.status(resposta.code).json({ message: resposta.message });
 };
 
 module.exports = {
