@@ -1,14 +1,17 @@
 
- 
- ## API-Corretora de investimentos
+<img width="100px" align="right" src="https://acegif.com/wp-content/gifs/pig-87.gif"/>  
+</br>
+</br>
+ <h1>API-Corretora de investimentos</h1>
 
 
- <image width = 100px src= https://acegif.com/wp-content/gifs/pig-87.gif  >  
 
 
 
 
-**Contexto**
+
+<p><strong>Contexto</strong></p>
+
 Simulação de uma api para um app de investimentos, no qual é possivel comprar/vender investimentos, 
 sacar/depositar dinheiro na conta do usuario e buscar dados sobre ativos. 
 
@@ -46,10 +49,17 @@ Foi realizado um deploy da aplicação no heroku e o link se encontra no canto s
 <details>
  <summary><strong>Tecnologias utilizadas</strong></summary><br />
 
-- JavaScrip |  Mocha      |  Chai
-- Sinon     |  Joi        |  Dotenv
-- Node.js   |  Express.js |  MySQL
-- Swagger   |  JWT
+- JavaScrip 
+- Mocha     
+- Sinon     
+- Node.js   
+- Swagger
+- JWT
+- Chai
+- Joi
+- Express.js
+- Dotenv
+0 Mysql
 
 </details>
 
