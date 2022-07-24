@@ -93,17 +93,25 @@ através do link do deploy, ou do Swagger.
   
   > Instale as dependências com `npm install`
  
-  - Para a plicação funcionar corretamente você precisa editar o arquivo .ev.example e alterar
- as variaveis de ambiente com o seu nome de usuário e senha.
+  - Para a plicação funcionar corretamente você precisa editar o arquivo ./.env.example: 
+    - alterar as variaveis de ambiente com o seu nome de usuário e senha.
+    - mudar o nome do aquivo para **.env**, caso contrário a aplicação não encontrará o arquivo.    
+ 
   :eyes: **De olho nas dicas:** 
+ 
   1. Para rodar o projeto desta forma, **obrigatoriamente** você deve ter o `node` instalado em seu computador.
   
  > Para iniciar a aplicação: `npm start`
  
  
- **AVISOS IMPOORTANTES!**
+ **AVISOS MEGA IMPORTANTES!**
  
- Para você conseguir testar as rotas é necessário que você popule o banco do dados. 
+ Para você conseguir testar as rotas é necessário que você popule o banco do dados:
+ 
+  - Se estiver usando o docker, você precisa criar um **novo usuário** com os dados disponíveis nas váriaveis de ambiente do compose.
+ - Após acessar o Mysql, copie a query para criar o banco de dados disponível na aquivo ./XPCorretora.sql e execute-a no sql.
+ 
+ - Se **NÃO** estiver usando o docker, acesse o mysql com os mesmos dados que você inseriu no .env.example e popule o banco com a mesma query.
 
 </details>
 
