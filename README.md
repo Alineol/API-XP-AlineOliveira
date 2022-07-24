@@ -12,13 +12,13 @@
 <p><strong>Contexto</strong></p>
 
 Simulação de uma api para um app de investimentos, no qual é possivel comprar/vender investimentos, 
-sacar/depositar dinheiro na conta do usuario e buscar dados sobre ativos. 
+sacar/depositar dinheiro na conta do usuário e buscar dados sobre ativos. 
 
-A Api foi construida no modelo MSC(model, service e controller).
+A Api foi construída no modelo MSC(model, service e controller).
 Sendo a model responsável pelo BD, service para as regras de negócio, e controller para lidar com as requisições e respostas.
 
-A  Api possui autenticação JWT em todas as rotas exceto a de login. Nas rotas críticas atém da validação do token, ainda há
-uma validação para ver se o usuário logado através do token é o mesmo que está fazendo requisição (a validação só possivel através de uma consulta ao BD)
+A  Api possui autenticação JWT em todas as rotas exceto a de login. Nas rotas críticas além da validação do token, ainda há
+uma validação para ver se o usuário logado através do token é o mesmo que está fazendo a requisição (a validação só possivel através de uma consulta ao BD)
 
 Também foram realizados testes unitários com Mocha Chai e Sinon.
 
@@ -29,8 +29,8 @@ Foi realizado um deploy da aplicação no heroku e o link se encontra no canto s
  <summary><strong>Habilidades desenvolvidas durante o desenvolvimento da API</strong></summary><br />
  
 - :fire: **Organizar uma aplicação completa desde o primeiro passo**; :fire:
-- Delegar responsabilidades específicas para cada camada;
 - Estruturar uma aplicação em camadas;
+- Delegar responsabilidades específicas para cada camada;
 - Melhorar a reusabilidade do código;
 - Entender e aplicar os padrões REST;
 - Escrever assinaturas para APIs intuitivas e facilmente entendíveis;
@@ -58,7 +58,7 @@ Foi realizado um deploy da aplicação no heroku e o link se encontra no canto s
 - Joi
 - Express.js
 - Dotenv
-0 Mysql
+- Mysql
 
 </details>
 
@@ -69,7 +69,7 @@ Foi realizado um deploy da aplicação no heroku e o link se encontra no canto s
  
  https://app.swaggerhub.com/apis-docs/Alineol/xp_api1/1.0.0
  
- ![image](https://user-images.githubusercontent.com/92826153/180629130-da857b42-399c-4010-9a3b-e8d56ffb0656.png)
+ ![image](https://user-images.githubusercontent.com/92826153/180666942-05bcd048-eb1e-41c7-89bb-39639c0e8569.png)
 
 </details>
  
@@ -100,7 +100,7 @@ Foi realizado um deploy da aplicação no heroku e o link se encontra no canto s
   > Instale as dependências com `npm install`
  
   - Para a aplicação funcionar corretamente você precisa editar o arquivo ./.env.example: 
-    - alterar as variaveis de ambiente com o seu nome de usuário e senha.
+    - alterar as variáveis de ambiente com o seu nome de usuário e senha.
     - mudar o nome do aquivo para **.env**, caso contrário a aplicação não encontrará o arquivo.    
  
 :eyes: **De olho nas dicas:** 
@@ -115,7 +115,7 @@ Foi realizado um deploy da aplicação no heroku e o link se encontra no canto s
  Para você conseguir testar as rotas através da sua máquina é necessário que você popule o banco do dados:
  
   - Se estiver usando o docker, você precisa criar um **novo usuário** com os dados disponíveis nas váriaveis de ambiente do compose.
- - Após acessar o Mysql, copie a query para criar o banco de dados disponível na aquivo ./XPCorretora.sql e execute-a no sql.
+ - Após acessar o Mysql, copie a query para criar o banco de dados disponível na aquivo `./XPCorretora.sql` e execute-a no sql.
  
  - Se **NÃO** estiver usando o docker, acesse o mysql com os mesmos dados que você inseriu no .env.example e popule o banco com a mesma query.
 
@@ -128,12 +128,12 @@ Foi realizado um deploy da aplicação no heroku e o link se encontra no canto s
 
  <img src=https://user-images.githubusercontent.com/92826153/180666153-1a6c98ad-23de-4b12-9bb1-f40ec2398cab.png>
 
-  <p>A imagem acima exemplifica o banco de dados e as relações entre as tableas</p>
+  <p>A imagem acima exemplifica o banco de dados e as relações entre as tabelas</p>
 
   - A Tabela **ativosCorretora** possui todos os ativos da corretora;
   - A tabela **usuarios** possui dados sobre os clientes;
-  - A tabela **contas** possui dados sobre a conta dos usuarios;
-  - A tabela **AtivosUsuarios** possui dados sobre quais usuarios tem tal ativo;
+  - A tabela **contas** possui dados sobre a conta dos usuários;
+  - A tabela **AtivosUsuarios** possui dados sobre quais usuários tem tal ativo;
     - Essa tabela possui uma relação de N:N com as outras duas tabelas, nesse caso, um mesmo ativo pode pertencer à varios usuários, e um usuário pode ter vários ativos, por isso a chave primária dessa tabela é o código do cliente e o código do ativo.
 
  </details>
