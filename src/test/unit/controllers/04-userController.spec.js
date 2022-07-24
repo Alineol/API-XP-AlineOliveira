@@ -4,6 +4,7 @@ const sinon = require('sinon');
 const { expect } = require('chai');
 const userService = require('../../../services/userService');
 const userController = require('../../../controllers/userController');
+const { arrayDeUsuarios } = require('../helpers');
 
 describe('Ao fazer login', () => {
   describe('Se inserir email ou senha incorretos', () => {
@@ -40,6 +41,46 @@ describe('Ao fazer login', () => {
       await userController.login(req, res);
       expect(res.status.calledWith(200)).to.be.true;
       expect(res.json.calledWith(sinon.match.object)).to.be.equal(true);
+    });
+  });
+});
+
+describe('Ao buscar todos os usarios do BD(controller)', () => {
+  describe('Quando não encontra todos os usuarios', () => {
+    const res = {};
+    const req = {};
+    before(() => {
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      sinon.stub(userService, 'pegarTodosOsUsuarios').resolves([]);
+    });
+    after(() => {
+      userService.pegarTodosOsUsuarios.restore();
+    });
+
+    it('retorna status 404 e um objeto no json', async () => {
+      await userController.pegarTodosOsUsuarios(req, res);
+      expect(res.status.calledWith(404)).to.be.true;
+      expect(res.json.calledWith(sinon.match.object)).to.be.equal(true);
+    });
+  });
+
+  describe('Quando encontra todos os usuarios', () => {
+    const res = {};
+    const req = {};
+    before(() => {
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      sinon.stub(userService, 'pegarTodosOsUsuarios').resolves(arrayDeUsuarios[0]);
+    });
+    after(() => {
+      userService.pegarTodosOsUsuarios.restore();
+    });
+
+    it('retorna status 200 e um array no json', async () => {
+      await userController.pegarTodosOsUsuarios(req, res);
+      expect(res.status.calledWith(200)).to.be.true;
+      expect(res.json.calledWith(sinon.match.array)).to.be.equal(true);
     });
   });
 });

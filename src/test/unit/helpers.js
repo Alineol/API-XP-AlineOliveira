@@ -10,6 +10,11 @@ const arrayDeAtivos = [[
   },
 ]];
 
+const arrayDeUsuarios = [[
+  { codCliente: 1, email: 'aline@123.com', senha: 'teste.123' },
+  { codCliente: 2, email: 'outroemail@.com', senha: 'senhadouser' },
+]];
+
 const arrayDeUmObjeto = [{
   fieldCount: 0,
   affectedRows: 1,
@@ -36,5 +41,11 @@ const arrayDeAtivosUsuario = [[
 ]];
 
 module.exports = {
-  ativo, arrayVazio, arrayDeUmObjeto, arrayDeAtivosUsuario, arrayDeConta, arrayDeAtivos,
+  ativo,
+  arrayVazio,
+  arrayDeUmObjeto,
+  arrayDeAtivosUsuario,
+  arrayDeConta,
+  arrayDeAtivos,
+  arrayDeUsuarios,
 };

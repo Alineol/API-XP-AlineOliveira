@@ -55,7 +55,11 @@ const pegarTodosOsAtivosCorretora = async (token) => {
   if (ativos.length === 0) {
     return 'Não há ativos disponíveis';
   }
-  return ativos;
+  return ativos.map((ativo) => ({
+    codAtivo: ativo.codAtivo,
+    qtdeAtivo: ativo.qtdeAtivo,
+    valor: Number(ativo.valor),
+  }));
 };
 
 module.exports = {

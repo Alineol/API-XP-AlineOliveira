@@ -8,4 +8,12 @@ const login = async (req, res) => {
   }
   return res.status(200).json({ token });
 };
-module.exports = { login };
+
+const pegarTodosOsUsuarios = async (req, res) => {
+  const users = await userService.pegarTodosOsUsuarios();
+  if (users.length === 0) {
+    return res.status(404).json({ message: 'Não há usuarios cadastrados' });
+  }
+  return res.status(200).json(users);
+};
+module.exports = { login, pegarTodosOsUsuarios };
