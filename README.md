@@ -138,5 +138,21 @@ Foi realizado um deploy da aplicação no heroku e o link se encontra no canto s
 
  </details>
 
+ <details>
+
+ <summary><strong>Informações sobre teste</strong></summary>
+
+  Nessa aplicação foram realizados apenas testes unitários. Para rodar os testes localmente não é necessário que a aplicação esteja iniciada.
+
+  >  No terminal digite `npm run test` 
+  
+  - Esse comando iniciará os testes
+
+  > No terminal digite `npm run coverage`
+
+  - Esse comando iniciará os testes e no final apresentará um relatório de cobertura dos testes.
+
+   </details>
+
 
 
