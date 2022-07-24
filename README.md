@@ -99,13 +99,13 @@ Foi realizado um deploy da aplicação no heroku e o link se encontra no canto s
   
   > Instale as dependências com `npm install`
  
-  - Para a plicação funcionar corretamente você precisa editar o arquivo ./.env.example: 
+  - Para a aplicação funcionar corretamente você precisa editar o arquivo ./.env.example: 
     - alterar as variaveis de ambiente com o seu nome de usuário e senha.
     - mudar o nome do aquivo para **.env**, caso contrário a aplicação não encontrará o arquivo.    
  
 :eyes: **De olho nas dicas:** 
  
- 1. Para rodar o projeto desta forma, **obrigatoriamente** você deve ter o `node` instalado em seu computador.
+ 1. Para rodar o projeto desta forma, **obrigatóriamente** você deve ter o `node` instalado em seu computador.
   
  > Para iniciar a aplicação: `npm start`
  
