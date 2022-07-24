@@ -40,4 +40,5 @@ module.exports = {
   pegarContaPorCodCliente,
   sacarDaConta,
   depositarNaConta,
+  conferirSaldo,
 };
