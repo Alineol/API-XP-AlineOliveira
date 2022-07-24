@@ -1,7 +1,9 @@
-## API-Corretora de investimentos
 
-<image  width = 100px src= https://acegif.com/wp-content/gifs/pig-87.gif  >
+ 
+ ## API-Corretora de investimentos
 
+
+ <image width = 100px src= https://acegif.com/wp-content/gifs/pig-87.gif  >  
 
 
 
@@ -40,7 +42,7 @@ através do link do deploy, ou do Swagger.
 -  :fire: **Fazer deploy de uma aplicação backEnd com banco de dados  na nuvem através heroku**; :fire:
 - Realizar testes unitários tentando buscar cobertura de 100%.
  
- Minhas maiores dificuldades estão nos itens que estão marcados,
+ 
 </details>
 
 <details>
