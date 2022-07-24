@@ -85,6 +85,25 @@ describe('Ao tentar sacar dinheiro da conta(service):', () => {
       expect(res.json.calledWith(sinon.match.object)).to.be.equal(true);
     });
   });
+  describe('- Se tentar sacar um valor maior do que o saldo', () => {
+    const res = {};
+    const req = {};
+    before(() => {
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      req.body = { codCliente: 1, valor: 200 };
+      req.headers = { authorization: 'afdaffajffjfofj' };
+      sinon.stub(contaService, 'sacarDaConta').resolves('Saque acima do limite disponível');
+    });
+    after(() => {
+      contaService.sacarDaConta.restore();
+    });
+    it('retorna status 400 e um objeto no json.', async () => {
+      await contaController.sacarDaConta(req, res);
+      expect(res.status.calledWith(400)).to.be.true;
+      expect(res.json.calledWith(sinon.match.object)).to.be.equal(true);
+    });
+  });
 });
 
 describe('Ao tentar depositar dinheiro da conta(service):', () => {
