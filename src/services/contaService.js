@@ -16,8 +16,8 @@ const pegarContaPorCodCliente = async (codCliente, token) => {
 
 const conferirSaldo = async (saque, codCliente) => {
   const saldo = await contaModel.pegarContaPorCodCliente(codCliente);
-  const { valor } = saldo;
-  return valor > saque;
+  const { valor } = saldo[0];
+  return valor >= saque;
 };
 
 const sacarDaConta = async (codCliente, valor, token) => {
