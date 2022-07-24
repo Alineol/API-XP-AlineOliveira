@@ -149,6 +149,26 @@ describe('Ao tentar realizar a venda de um ativo(controller):', () => {
       expect(res.json.calledWith(sinon.match.object)).to.be.equal(true);
     });
   });
+  describe('- Se tentar comprar sem saldo disponível', () => {
+    const res = {};
+    const req = {};
+    before(() => {
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      req.body = { codCliente: 1, codAtivo: 1, qtdeAtivo: 1 };
+      req.headers = { authorization: 'jdadajfajf' };
+      sinon.stub(ativoService, 'sellAtivosCorretora').resolves('Compra acima do limite de saldo disponível');
+    });
+    after(() => {
+      ativoService.sellAtivosCorretora.restore();
+    });
+
+    it('retorna status 400 e um objeto no json.', async () => {
+      await ativoController.venderAtivoCorretora(req, res);
+      expect(res.status.calledWith(400)).to.be.true;
+      expect(res.json.calledWith(sinon.match.object)).to.be.equal(true);
+    });
+  });
 });
 describe('Ao tentar pegar todos os ativos do BD(ccontroller)', () => {
   describe('-Se o usuario não estiver logado', () => {
