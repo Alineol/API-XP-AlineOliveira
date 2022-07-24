@@ -1,4 +1,5 @@
 const ativoUsuarioModel = require('../models/ativoUsuarioModel');
+const contaModel = require('../models/contaModel');
 const userService = require('./userService');
 const helpers = require('../helpers');
 
@@ -30,6 +31,9 @@ const venderAtivosUsuario = async (
 
   const checkQtde = helpers.conferirQtde(ativoToSell.qtdeAtivo, qtdeAtivo);
   if (checkQtde === false) return 'Quantidade de ativos excedida';
+
+  const valorDaVenda = ativoToSell.valor * qtdeAtivo;
+  await contaModel.incrementarSaldo(codCliente, valorDaVenda);
 
   await ativoUsuarioModel.decrementarAtivosUsuarioQtde(codAtivo, codCliente, qtdeAtivo);
   return 'ok';
