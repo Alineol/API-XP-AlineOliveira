@@ -66,4 +66,35 @@ através do link do deploy, ou do Swagger.
 
 
 </details>
+ 
+
+<details>
+ 
+   <summary><strong>Como rodar o projeto na sua máquina:</strong></summary><br />
+ 
+   <strong>:whale: Rodando no Docker vs Localmente</strong>
+  
+  **Com Docker**
+  O arquivo docker-compose cria dois containers na sua máquina, um com node(porta 3000) e outro com mysql (porta 3308).
+  > Rode os containers com o comando `docker-compose up -d`.
+  - Esse serviço irá inicializar dois containers chamados xp_api(node) e xp_api_db(mysql).
+  - A partir daqui você pode rodar o container via CLI ou abri-lo no VS Code.
+  > Use o comando `docker exec -it xp_api bash`.
+  - Ele te dará acesso ao terminal interativo do container criado pelo compose, que está rodando em segundo plano.
+
+  > Instale as dependências  com `npm install`
+  
+  > Para iniciar a aplicação: `npm run dev ou npm start
+  
+  ## Sem Docker
+  
+  > Instale as dependências com `npm install`
+
+  :eyes: **De olho nas dicas:** 
+  1. Para rodar o projeto desta forma, **obrigatoriamente** você deve ter o `node` instalado em seu computador.
+  
+ > Para iniciar a aplicação: `npm run dev`
+ 
+
+</details>
 
