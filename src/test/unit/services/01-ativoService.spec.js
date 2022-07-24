@@ -110,7 +110,7 @@ describe('Ao tentar realizar a venda de um ativo(service):', () => {
       sinon.stub(ativoModel, 'pegaAtivosCorretoraPorCodAtivo').resolves(ativo);
       sinon.stub(ativoService, 'atualizarOuRegistrarAtivoUsuario').resolves('');
       sinon.stub(ativoModel, 'decrementarAtivosCorretotaQtde').resolves('');
-      sinon.stub(contaModel, 'pegarContaPorCodCliente').resolves({ valor: 500 });
+      sinon.stub(contaModel, 'pegarContaPorCodCliente').resolves([{ valor: 500 }]);
     });
     after(() => {
       userService.checkAuthorization.restore();
@@ -125,13 +125,13 @@ describe('Ao tentar realizar a venda de um ativo(service):', () => {
       expect(response).to.be.equal('ok');
     });
   });
-  describe('- Se tentar comprar ativos sem saldo para compra', () => {
+  describe('- Se tentar comprar ativos sem saldo para a compra', () => {
     before(() => {
       sinon.stub(userService, 'checkAuthorization').resolves(true);
       sinon.stub(ativoModel, 'pegaAtivosCorretoraPorCodAtivo').resolves(ativo);
       sinon.stub(ativoService, 'atualizarOuRegistrarAtivoUsuario').resolves('');
       sinon.stub(ativoModel, 'decrementarAtivosCorretotaQtde').resolves('');
-      sinon.stub(contaModel, 'pegarContaPorCodCliente').resolves({ valor: 0 });
+      sinon.stub(contaModel, 'pegarContaPorCodCliente').resolves([{ valor: 0 }]);
     });
     after(() => {
       userService.checkAuthorization.restore();

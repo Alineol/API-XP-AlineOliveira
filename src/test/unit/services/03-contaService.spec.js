@@ -61,7 +61,7 @@ describe('Ao tentar sacar da conta(service)', () => {
   describe('- Se conseguir efetuar a ação com sucesso', () => {
     before(() => {
       sinon.stub(userService, 'checkAuthorization').resolves(true);
-      sinon.stub(contaModel, 'pegarContaPorCodCliente').resolves({ valor: 500 });
+      sinon.stub(contaModel, 'pegarContaPorCodCliente').resolves([{ valor: 500 }]);
       sinon.stub(contaModel, 'decrementarSaldo').resolves('ok');
     });
     after(() => {
@@ -78,7 +78,7 @@ describe('Ao tentar sacar da conta(service)', () => {
   describe('- Se tentar sacar um valor maior do que o saldo', () => {
     before(() => {
       sinon.stub(userService, 'checkAuthorization').resolves(true);
-      sinon.stub(contaModel, 'pegarContaPorCodCliente').resolves({ valor: 5 });
+      sinon.stub(contaModel, 'pegarContaPorCodCliente').resolves([{ valor: 5 }]);
       sinon.stub(contaModel, 'decrementarSaldo').resolves('ok');
     });
     after(() => {
