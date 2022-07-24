@@ -75,26 +75,35 @@ através do link do deploy, ou do Swagger.
    <strong>:whale: Rodando no Docker vs Localmente</strong>
   
   **Com Docker**
-  O arquivo docker-compose cria dois containers na sua máquina, um com node(porta 3000) e outro com mysql (porta 3308).
+
   > Rode os containers com o comando `docker-compose up -d`.
-  - Esse serviço irá inicializar dois containers chamados xp_api(node) e xp_api_db(mysql).
+  - Esse serviço irá inicializar dois containers chamados xp_api(node, port:3000) e xp_api_db(mysql, port 3308).
   - A partir daqui você pode rodar o container via CLI ou abri-lo no VS Code.
   > Use o comando `docker exec -it xp_api bash`.
   - Ele te dará acesso ao terminal interativo do container criado pelo compose, que está rodando em segundo plano.
 
   > Instale as dependências  com `npm install`
+ 
+  - Não é necessário editar o aquivo .env.example, o docker-compose já está com as variáveis de ambiente
   
-  > Para iniciar a aplicação: `npm run dev ou npm start
+  > Para iniciar a aplicação: `npm start`
+   - Todos os comandos npm devem ser rodados dentro do container, exceto npm commit (caso queira usar o commitizem)
   
-  ## Sem Docker
+  **Sem Docker**
   
   > Instale as dependências com `npm install`
-
+ 
+  - Para a plicação funcionar corretamente você precisa editar o arquivo .ev.example e alterar
+ as variaveis de ambiente com o seu nome de usuário e senha.
   :eyes: **De olho nas dicas:** 
   1. Para rodar o projeto desta forma, **obrigatoriamente** você deve ter o `node` instalado em seu computador.
   
- > Para iniciar a aplicação: `npm run dev`
+ > Para iniciar a aplicação: `npm start`
  
+ 
+ **AVISOS IMPOORTANTES!**
+ 
+ Para você conseguir testar as rotas é necessário que você popule o banco do dados. 
 
 </details>
 
