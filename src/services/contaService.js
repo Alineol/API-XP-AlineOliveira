@@ -14,10 +14,18 @@ const pegarContaPorCodCliente = async (codCliente, token) => {
   };
 };
 
-const sacarDaConta = async (codCliente, value, token) => {
+const conferirSaldo = async (saque, codCliente) => {
+  const saldo = await contaModel.pegarContaPorCodCliente(codCliente);
+  const { valor } = saldo;
+  return valor > saque;
+};
+
+const sacarDaConta = async (codCliente, valor, token) => {
   const authorization = await userService.checkAuthorization(token, codCliente);
   if (!authorization) return athorizationMessage;
-  return contaModel.decrementarSaldo(codCliente, value);
+  const saldo = await conferirSaldo(valor, codCliente);
+  if (!saldo) return 'Saque acima do limite disponível';
+  return contaModel.decrementarSaldo(codCliente, valor);
   // Todo não permitir que o usuario tire mais do que ele tem
 };
 
