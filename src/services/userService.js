@@ -15,4 +15,9 @@ const login = async (email, senha) => {
   return token;
 };
 
-module.exports = { login, checkAuthorization };
+const pegarTodosOsUsuarios = async () => {
+  const users = await userModel.pegarTodosOsUsuarios();
+  return users;
+};
+
+module.exports = { login, checkAuthorization, pegarTodosOsUsuarios };
