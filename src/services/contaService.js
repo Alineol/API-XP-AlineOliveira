@@ -26,7 +26,6 @@ const sacarDaConta = async (codCliente, valor, token) => {
   const saldo = await conferirSaldo(valor, codCliente);
   if (!saldo) return 'Saque acima do limite disponível';
   return contaModel.decrementarSaldo(codCliente, valor);
-  // Todo não permitir que o usuario tire mais do que ele tem
 };
 
 const depositarNaConta = async (codCliente, value, token) => {

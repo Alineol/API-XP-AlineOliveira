@@ -37,8 +37,6 @@ const venderAtivosUsuario = async (
 
   await ativoUsuarioModel.decrementarAtivosUsuarioQtde(codAtivo, codCliente, qtdeAtivo);
   return 'ok';
-  // ! Iria apagar a quantidade total mas decidi só zerar para manter o registro -> relação se
-  // encontra na função de pegar todos os os ativos de determinado usuario
 };
 
 module.exports = {
