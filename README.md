@@ -120,4 +120,5 @@ Foi realizado um deploy da aplicação no heroku e o link se encontra no canto s
  - Se **NÃO** estiver usando o docker, acesse o mysql com os mesmos dados que você inseriu no .env.example e popule o banco com a mesma query.
 
 </details>
+![image](https://user-images.githubusercontent.com/92826153/180665605-c8854e19-6e08-4ac6-b5d6-96d76a5296d0.png)
 
