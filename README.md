@@ -120,5 +120,23 @@ Foi realizado um deploy da aplicação no heroku e o link se encontra no canto s
  - Se **NÃO** estiver usando o docker, acesse o mysql com os mesmos dados que você inseriu no .env.example e popule o banco com a mesma query.
 
 </details>
-![image](https://user-images.githubusercontent.com/92826153/180665605-c8854e19-6e08-4ac6-b5d6-96d76a5296d0.png)
+
+ <details>
+
+
+ <summary><strong> Informações sobre o Banco de Dados</strong></summary>
+
+ <img src=https://user-images.githubusercontent.com/92826153/180666153-1a6c98ad-23de-4b12-9bb1-f40ec2398cab.png>
+
+  <p>A imagem acima exemplifica o banco de dados e as relações entre as tableas</p>
+
+  - A Tabela **ativosCorretora** possui todos os ativos da corretora;
+  - A tabela **usuarios** possui dados sobre os clientes;
+  - A tabela **contas** possui dados sobre a conta dos usuarios;
+  - A tabela **AtivosUsuarios** possui dados sobre quais usuarios tem tal ativo;
+    - Essa tabela possui uma relação de N:N com as outras duas tabelas, nesse caso, um mesmo ativo pode pertencer à varios usuários, e um usuário pode ter vários ativos, por isso a chave primária dessa tabela é o código do cliente e o código do ativo.
+
+ </details>
+
+
 
