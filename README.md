@@ -231,3 +231,12 @@ Foi realizado um deploy da aplicação no heroku e o link se encontra no canto s
   - retira o valor da comprana conta do cliente
 
   </details>
+
+<details>
+<summary><strong>/admin/usuarios</strong></summary>
+
+  - retorna todos os usuários
+  - não tem verificação
+</details>
+
+</details>
