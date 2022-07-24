@@ -156,3 +156,78 @@ Foi realizado um deploy da aplicação no heroku e o link se encontra no canto s
 
 
 
+<details>
+<summary><strong> Validações e ações das rotas: </strong></summary>
+<details>
+
+<summary><strong> /login </strong></summary>
+
+  - validação do body
+  - validação das informações no BD
+</details>
+
+<details>
+<summary><strong>/cliente/conta/:CodCliente </strong></summary>
+
+  - validação do header
+  - validação se o token corresponse ao id enviado no parâmetro
+</details>
+
+<details>
+<summary><strong>/cliente/conta/saque </strong></summary>
+
+  - validação do body
+  - validação se o token corresponse ao id enviado no body
+  - confere se o valor para saque não é maior que o disponível na conta
+</details>
+
+<details>
+<summary><strong>/cliente/conta/deposito </strong></summary>
+
+  - validação do body
+  - validação se o token corresponse ao id enviado no body
+
+</details>
+
+<details>
+<summary><strong>/cliente/ativos:codCliente</strong></summary>
+
+  - validação do header
+  - confere se o id do token é do conrresponde ao login
+
+</details>
+
+<details>
+<summary><strong>/ativos</strong></summary>
+
+  - validação se tem token
+
+</details>
+
+<details>
+<summary><strong>/ativos/:codAtivo</strong></summary>
+
+  - validação se tem token
+
+</details>
+
+<details>
+<summary><strong>/investimentos/vender</strong></summary>
+ 
+  - validação do body
+  - validação se o token corresponse ao id enviado no body
+  - validação do id do ativo
+  - adiciona o valor da venda na conta do cliente
+
+</details>
+
+<details>
+<summary><strong>/investimentos/comprar</strong></summary>
+
+  - validação do body
+  - validação se o token corresponse ao id enviado no body
+  - validação do id do ativo
+  - confere se o cliente possui saldo para a compra
+  - retira o valor da comprana conta do cliente
+
+  </details>
