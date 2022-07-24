@@ -67,7 +67,7 @@ Foi realizado um deploy da aplicação no heroku e o link se encontra no canto s
  
  **Disponíveis para serem testados, e com mais especificações no link do Swagger abaixo:**
  
-  https://app.swaggerhub.com/apis/Alineol/xp_api1/1.0.0
+ https://app.swaggerhub.com/apis-docs/Alineol/xp_api1/1.0.0
  
  ![image](https://user-images.githubusercontent.com/92826153/180629130-da857b42-399c-4010-9a3b-e8d56ffb0656.png)
 
