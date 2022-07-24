@@ -4,10 +4,10 @@ const mysql = require('mysql2/promise');
 dotenv.config();
 
 const connection = mysql.createPool({
-  host: 'us-cdbr-east-06.cleardb.net',
-  user: 'b7d39aa3a7c462',
-  password: 'fb5f81c6',
-  database: 'heroku_78f307a106fddb2',
+  host: process.env.MYSQL_HOST,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  database: process.env.MYSQL_DB,
 });
 
 module.exports = connection;
