@@ -67,7 +67,7 @@ describe('Ao tentar fazer login(service):', () => {
   });
 });
 
-describe.only('Ao buscar todos os usarios do BD(service)', () => {
+describe('Ao buscar todos os usarios do BD(service)', () => {
   describe('Quando não encontra todos os usuarios', () => {
     before(() => {
       sinon.stub(userModel, 'pegarTodosOsUsuarios').resolves(arrayVazio[0]);

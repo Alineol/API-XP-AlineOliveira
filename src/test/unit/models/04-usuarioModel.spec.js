@@ -68,7 +68,7 @@ describe('Ao buscar um usuario pelo email', () => {
   });
 });
 
-describe.only('Ao buscar todos os usarios do BD(model)', () => {
+describe('Ao buscar todos os usarios do BD(model)', () => {
   describe('Quando não encontra todos os usuarios', () => {
     before(() => {
       sinon.stub(connection, 'execute').resolves(arrayVazio);
