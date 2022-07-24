@@ -12,35 +12,33 @@
 Simulação de uma api para um app de investimentos, no qual é possivel comprar/vender investimentos, 
 sacar/depositar dinheiro na conta do usuario e buscar dados sobre ativos. 
 
-A Api foi construida do modelo MSC(mode, service e controller).
-Sendo a model responsável pelo BD, service para as regras negócio, e controller para lidar com as request e responsers.
+A Api foi construida no modelo MSC(model, service e controller).
+Sendo a model responsável pelo BD, service para as regras de negócio, e controller para lidar com as requisições e respostas.
 
 A  Api possui autenticação JWT em todas as rotas exceto a de login. Nas rotas críticas atém da validação do token, ainda há
-uma validação para ver se o usuário logado através do token é o mesmo que está solicitando a requisição(a validação só possivel 
-através de uma consulta ao BD)
+uma validação para ver se o usuário logado através do token é o mesmo que está fazendo requisição (a validação só possivel através de uma consulta ao BD)
 
 Também foram realizados testes unitários com Mocha Chai e Sinon.
 
-Foi realizado do deploy da aplicação no heroku e o link se encontra no canto superior direto, você pode testar as requisições 
-através do link do deploy, ou do Swagger.
+Foi realizado um deploy da aplicação no heroku e o link se encontra no canto superior direto, você pode testar as requisições através do link do deploy,  do Swagger ou rodando a aplicação na sua máquina após fazer um clone.
 
 
 <details>
  <summary><strong>Habilidades desenvolvidas durante o desenvolvimento da API</strong></summary><br />
  
 - :fire: **Organizar uma aplicação completa desde o primeiro passo**; :fire:
-- Delegar responsabilidades específicas para essa camada;
+- Delegar responsabilidades específicas para cada camada;
 - Estruturar uma aplicação em camadas;
-- Melhorar manutenibilidade e reusabilidade do código;
+- Melhorar a reusabilidade do código;
 - Entender e aplicar os padrões REST;
 - Escrever assinaturas para APIs intuitivas e facilmente entendíveis;
 -  :fire: **Documentar aplicação com o Swagger**; :fire:
 - Utilizar JWT para autenticação;
 - Configurar docker-compose;
-- Utilizar Dotenv para para as variáveis de ambiente secretas.;
-- Utilizar Joi para tratamento de erros;
--  :fire: **Fazer deploy de uma aplicação backEnd com banco de dados  na nuvem através heroku**; :fire:
-- Realizar testes unitários tentando buscar cobertura de 100%.
+- Utilizar Dotenv para as variáveis de ambiente secretas.;
+- Utilizar Joi para tratamento de erros com tradução para o pt-br;
+-  :fire: **Fazer deploy de uma aplicação backEnd com banco de dados na nuvem através heroku**; :fire:
+- Realizar testes unitários tentando buscar cobertura de 100% do código.
  
  
 </details>
@@ -58,12 +56,11 @@ através do link do deploy, ou do Swagger.
 <details>
  <summary><strong>Endpoints disponíveis na aplicação:</strong></summary><br />
  
- **Disponíveis para serem testados, e com mais especificações no link abaixo:**
+ **Disponíveis para serem testados, e com mais especificações no link do Swagger abaixo:**
  
   https://app.swaggerhub.com/apis/Alineol/xp_api1/1.0.0
  
  ![image](https://user-images.githubusercontent.com/92826153/180629130-da857b42-399c-4010-9a3b-e8d56ffb0656.png)
-
 
 </details>
  
@@ -84,7 +81,7 @@ através do link do deploy, ou do Swagger.
 
   > Instale as dependências  com `npm install`
  
-  - Não é necessário editar o aquivo .env.example, o docker-compose já está com as variáveis de ambiente
+  - Não é necessário editar o aquivo .env.example, o docker-compose já está com as variáveis de ambiente.
   
   > Para iniciar a aplicação: `npm start`
    - Todos os comandos npm devem ser rodados dentro do container, exceto npm commit (caso queira usar o commitizem)
@@ -97,16 +94,16 @@ através do link do deploy, ou do Swagger.
     - alterar as variaveis de ambiente com o seu nome de usuário e senha.
     - mudar o nome do aquivo para **.env**, caso contrário a aplicação não encontrará o arquivo.    
  
-  :eyes: **De olho nas dicas:** 
+:eyes: **De olho nas dicas:** 
  
-  1. Para rodar o projeto desta forma, **obrigatoriamente** você deve ter o `node` instalado em seu computador.
+ 1. Para rodar o projeto desta forma, **obrigatoriamente** você deve ter o `node` instalado em seu computador.
   
  > Para iniciar a aplicação: `npm start`
  
  
  **AVISOS MEGA IMPORTANTES!**
  
- Para você conseguir testar as rotas é necessário que você popule o banco do dados:
+ Para você conseguir testar as rotas através da sua máquina é necessário que você popule o banco do dados:
  
   - Se estiver usando o docker, você precisa criar um **novo usuário** com os dados disponíveis nas váriaveis de ambiente do compose.
  - Após acessar o Mysql, copie a query para criar o banco de dados disponível na aquivo ./XPCorretora.sql e execute-a no sql.
