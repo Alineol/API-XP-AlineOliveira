@@ -25,7 +25,7 @@ CREATE TABLE XPCorretora.AtivosUsuarios(
 
 CREATE TABLE XPCorretora.Contas(
 	id INTEGER PRIMARY kEY AUTO_INCREMENT NOT NULL,
-	codCliente INT NOT NULL,
+	codCliente INT NOT NULL UNIQUE,
 	FOREIGN KEY(codCliente) references Usuarios(codCliente),
     valor DECIMAL(18, 2) NOT NULL
 );
