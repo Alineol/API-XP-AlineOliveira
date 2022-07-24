@@ -9,6 +9,8 @@ function validarResposta(retorno) {
     case 'Saque acima do limite disponível': {
       return { code: 400, message: retorno };
     }
+    case 'Compra acima do limite de saldo disponível':
+      return { code: 400, message: retorno };
     default: return { code: 200, message: 'Ação efetuada com sucesso!' };
   }
 }

@@ -2,7 +2,9 @@ const ativoModel = require('../models/ativoModel');
 const userService = require('./userService');
 const helpers = require('../helpers');
 const ativoUsuarioModel = require('../models/ativoUsuarioModel');
+const contaModel = require('../models/contaModel');
 const jwt = require('../jwt/index');
+const { conferirSaldo } = require('./contaService');
 
 const pegaAtivosCorretoraPorCodAtivo = async (cod, token) => {
   const authorization = await jwt.conferirToken(token);
@@ -42,8 +44,13 @@ const sellAtivosCorretora = async (
 
   const checkQtde = helpers.conferirQtde(ativoToSell.qtdeAtivo, qtdeAtivo);
   if (checkQtde === false) return 'Quantidade de ativos excedida';
-  // ! lógica para aumentar a quantidade de ativos do cliente após uma compra
+
+  const valorDaCompra = ativoToSell.valor * qtdeAtivo;
+  const saldo = await conferirSaldo(valorDaCompra, codCliente);
+  if (!saldo) return 'Compra acima do limite de saldo disponível';
+
   atualizarOuRegistrarAtivoUsuario({ codAtivo, qtdeAtivo, valor: ativoToSell.valor }, codCliente);
+  await contaModel.decrementarSaldo(codCliente, valorDaCompra);
   await ativoModel.decrementarAtivosCorretotaQtde(codAtivo, qtdeAtivo);
   return 'ok';
 };

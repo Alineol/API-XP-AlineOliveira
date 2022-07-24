@@ -5,6 +5,7 @@ const { expect } = require('chai');
 const ativoModel = require('../../../models/ativoModel');
 const ativoService = require('../../../services/ativoService');
 const userService = require('../../../services/userService');
+const contaModel = require('../../../models/contaModel');
 const { ativo, arrayVazio, arrayDeAtivos } = require('../helpers');
 const jwt = require('../../../jwt/index');
 
@@ -109,17 +110,40 @@ describe('Ao tentar realizar a venda de um ativo(service):', () => {
       sinon.stub(ativoModel, 'pegaAtivosCorretoraPorCodAtivo').resolves(ativo);
       sinon.stub(ativoService, 'atualizarOuRegistrarAtivoUsuario').resolves('');
       sinon.stub(ativoModel, 'decrementarAtivosCorretotaQtde').resolves('');
+      sinon.stub(contaModel, 'pegarContaPorCodCliente').resolves({ valor: 500 });
     });
     after(() => {
       userService.checkAuthorization.restore();
       ativoModel.pegaAtivosCorretoraPorCodAtivo.restore();
       ativoService.atualizarOuRegistrarAtivoUsuario.restore();
       ativoModel.decrementarAtivosCorretotaQtde.restore();
+      contaModel.pegarContaPorCodCliente.restore();
     });
 
     it('retorna uma string com a frase: "ok"', async () => {
       const response = await ativoService.sellAtivosCorretora(1, 1, 2, 'akjdhqodiadjadja');
       expect(response).to.be.equal('ok');
+    });
+  });
+  describe('- Se tentar comprar ativos sem saldo para compra', () => {
+    before(() => {
+      sinon.stub(userService, 'checkAuthorization').resolves(true);
+      sinon.stub(ativoModel, 'pegaAtivosCorretoraPorCodAtivo').resolves(ativo);
+      sinon.stub(ativoService, 'atualizarOuRegistrarAtivoUsuario').resolves('');
+      sinon.stub(ativoModel, 'decrementarAtivosCorretotaQtde').resolves('');
+      sinon.stub(contaModel, 'pegarContaPorCodCliente').resolves({ valor: 0 });
+    });
+    after(() => {
+      userService.checkAuthorization.restore();
+      ativoModel.pegaAtivosCorretoraPorCodAtivo.restore();
+      ativoService.atualizarOuRegistrarAtivoUsuario.restore();
+      ativoModel.decrementarAtivosCorretotaQtde.restore();
+      contaModel.pegarContaPorCodCliente.restore();
+    });
+
+    it('retorna uma string com a frase: "Compra acima do limite de saldo disponível"', async () => {
+      const response = await ativoService.sellAtivosCorretora(1, 1, 2, 'akjdhqodiadjadja');
+      expect(response).to.be.equal('Compra acima do limite de saldo disponível');
     });
   });
 });
